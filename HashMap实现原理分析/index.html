@@ -4,18 +4,18 @@
     <meta charset="utf-8">
     
     
-    <title>Hello World | gaooye</title>
+    <title>HashMap实现原理分析 | 走吧!! 去吃肉!!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content>
-    <link rel="shortcut icon" href="/img/1percent.ico">
+    <link rel="shortcut icon" href="/img/face.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.4">
     
     <script type="text/javascript">
         // Data Center
         var DC = {
-            reward:	true,
+            reward:	false,
             lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
             v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"说点什么...","avatar":"msg"}'),
             g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
@@ -39,7 +39,7 @@
     </a>
     <div class="brand-wrap">
       
-      <img src="/img/blue-wall.jpg" class="brand-bg">
+      <img src="/img/soul.jpg" class="brand-bg">
       
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
@@ -87,13 +87,13 @@
         <ul class="menu-link">
           
               <li>
-                <a href="https://github.com/codefine" target="_blank">
+                <a href="https://github.com/gaooye" target="_blank">
                   <i class="icon icon-lg icon-github"></i>
                 </a>
               </li>
             
               <li>
-                <a href="https://baidu.com" target="_blank">
+                <a href="/img/reward-wechat.jpg " target="_blank">
                   <i class="icon icon-lg icon-wechat"></i>
                 </a>
               </li>
@@ -113,7 +113,14 @@
             </li>
         
             <li class="">
-              <a href="/categories"  >
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archive"></i>
+                文章
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="C:\Users\83932\blog\themes\mellow\layout/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
                 分类
               </a>
@@ -129,21 +136,7 @@
             <li class="">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archives"></i>
-                ARCHIVES
-              </a>
-            </li>
-        
-            <li class="">
-              <a href="/custom"  >
-                <i class="icon icon-lg icon-plus-square"></i>
-                CUSTOM
-              </a>
-            </li>
-        
-            <li class="">
-              <a href="https://github.com/" target="_blank" >
-                <i class="icon icon-lg icon-github"></i>
-                Github
+                归档
               </a>
             </li>
         
@@ -159,7 +152,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>Hello World</span>
+            <span>HashMap实现原理分析</span>
             
         </div>
         
@@ -172,11 +165,11 @@
 <header class="content-header post-header">
     <img src="/img/laopo.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">Hello World</h1>
+        <h1 class="title">HashMap实现原理分析</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-09-05T04:44:30.228Z" itemprop="datePublished" class="page-time">
-  2019-09-05
+                <time datetime="2019-09-06T15:40:58.000Z" itemprop="datePublished" class="page-time">
+  2019-09-06
 </time>
 
 
@@ -203,12 +196,12 @@
 
 
 <div class="container body-wrap">
-    <article id="post-hello-world"
+    <article id="post-HashMap实现原理分析"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">Hello World</h1>
+        <h1 class="post-card-title">HashMap实现原理分析</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-09-05 12:44:30" datetime="2019-09-05T04:44:30.228Z"  itemprop="datePublished">2019-09-05</time>
+            <time class="post-time" title="2019-09-06 23:40:58" datetime="2019-09-06T15:40:58.000Z"  itemprop="datePublished">2019-09-06</time>
 
             
 
@@ -222,19 +215,14 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+            <h1 id="1-HashMap的数据结构"><a href="#1-HashMap的数据结构" class="headerlink" title="1. HashMap的数据结构"></a>1. HashMap的数据结构</h1><p>数据结构中有数组和链表来实现对数据的存储，但这两者基本上是两个极端。</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组存储区间是连续的，占用内存严重，故空间复杂的很大。但数组的二分查找时间复杂度小，为O(1)；数组的特点是：寻址容易，插入和删除困难；</p>
+<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><p>链表存储区间离散，占用内存比较宽松，故空间复杂度很小，但时间复杂度很大，达O（N）。链表的特点是：寻址困难，插入和删除容易。</p>
+<h2 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h2><p>那么我们能不能综合两者的特性，做出一种寻址容易，插入删除也容易的数据结构？答案是肯定的，这就是我们要提起的哈希表。哈希表（(Hash table）既满足了数据的查找方便，同时不占用太多的内容空间，使用也十分方便。</p>
+<figure class="image-box">
+                <a rel=HashMap实现原理分析 href="https://img-blog.csdnimg.cn/2019090623361533.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAwMjY1Ng==,size_16,color_FFFFFF,t_70" title="在这里插入图片描述" data-fancybox="images"><img src="https://img-blog.csdnimg.cn/2019090623361533.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjAwMjY1Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" title class></a>
+                <p>在这里插入图片描述</p>
+            </figure>
 
         </div>
         
@@ -242,28 +230,22 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-09-05T04:44:30.228Z" itemprop="dateUpdated">2019-09-05 12:44:30</time>
+    Last updated: <time datetime="2019-09-06T15:55:56.318Z" itemprop="dateUpdated">2019-09-06 23:55:56</time>
 </span><br>
 
 
         
-        转载注明出处，原文地址：<a href="/2019/09/05/hello-world/" target="_blank" rel="external">http://yoursite.com/2019/09/05/hello-world/</a>
+        转载注明出处，原文地址：<a href="/HashMap实现原理分析/" target="_blank" rel="external">https://gaooye.github.io/HashMap实现原理分析/</a>
         
     </div>
     <footer>
-        <a href="http://yoursite.com">
+        <a href="https://gaooye.github.io">
             <img src="/img/girl.jpg" alt="gaoyee">
             gaoyee
         </a>
     </footer>
 </blockquote>
 
-        
-            <div class="page-reward">
-    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
-</div>
-
-            
         
         <div class="post-footer">
             
@@ -274,7 +256,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/09/05/hello-world/&title=《Hello World》 — gaooye&pic=http://yoursite.com/img/girl.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gaooye.github.io/HashMap实现原理分析/&title=《HashMap实现原理分析》 — 走吧!! 去吃肉!!&pic=https://gaooye.github.io/img/girl.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -286,25 +268,25 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/09/05/hello-world/&title=《Hello World》 — gaooye&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gaooye.github.io/HashMap实现原理分析/&title=《HashMap实现原理分析》 — 走吧!! 去吃肉!!&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/09/05/hello-world/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gaooye.github.io/HashMap实现原理分析/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hello World》 — gaooye&url=http://yoursite.com/2019/09/05/hello-world/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《HashMap实现原理分析》 — 走吧!! 去吃肉!!&url=https://gaooye.github.io/HashMap实现原理分析/&via=https://gaooye.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/09/05/hello-world/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gaooye.github.io/HashMap实现原理分析/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -330,13 +312,20 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="prev">
-      <a href="/2019/09/05/find-job/" id="post-prev" class="post-nav-link">
+      <a href="/ok/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">find job</h4>
+        <h4 class="title">ok</h4>
       </a>
     </div>
   
 
+  
+    <div class="next">
+      <a href="/find-job/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">find job</h4>
+      </a>
+    </div>
   
 </nav>
 
@@ -346,40 +335,13 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Quick-Start"><span class="post-toc-number">1.</span> <span class="post-toc-text">Quick Start</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Create-a-new-post"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Create a new post</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Run-server"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Run server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Generate-static-files"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Generate static files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Deploy-to-remote-sites"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-HashMap的数据结构"><span class="post-toc-text">1. HashMap的数据结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数组"><span class="post-toc-text">数组</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#链表"><span class="post-toc-text">链表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#哈希表"><span class="post-toc-text">哈希表</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
     
 </article>
 
-    <div id="reward" class="page-modal reward-lay">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <h3 class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        我们一起来让这个世界有趣一点
-        <i class="icon icon-quote-right"></i>
-    </h3>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/img/reward-wechat.jpg" alt="打赏二维码">
-        </div>
-        
-        <label class="reward-toggle">
-            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
-                data-wechat="/img/reward-wechat.jpg" data-alipay="/img/reward-alipay.jpg">
-            <div class="reward-toggle-ctrol">
-                <span class="reward-toggle-item wechat">微信</span>
-                <span class="reward-toggle-label"></span>
-                <span class="reward-toggle-item alipay">支付宝</span>
-            </div>
-        </label>
-        
-    </div>
-</div>
-
-    
 
 </div>
 
@@ -407,11 +369,11 @@
             </span>
         		
            	
+           	<span>
+           		<a href="http://www.miitbeian.gov.cn/" target="_blank">搞嘢gaooye</a>
+           	</span>
+           	
             
-            
-            <span>
-	            Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/codefine/hexo-theme-mellow" target="_blank">mellow</a>
-            </span>
             
             
             
@@ -443,7 +405,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2019/09/05/hello-world/&title=《Hello World》 — gaooye&pic=http://yoursite.com/img/girl.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gaooye.github.io/HashMap实现原理分析/&title=《HashMap实现原理分析》 — 走吧!! 去吃肉!!&pic=https://gaooye.github.io/img/girl.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -455,25 +417,25 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2019/09/05/hello-world/&title=《Hello World》 — gaooye&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gaooye.github.io/HashMap实现原理分析/&title=《HashMap实现原理分析》 — 走吧!! 去吃肉!!&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2019/09/05/hello-world/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gaooye.github.io/HashMap实现原理分析/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hello World》 — gaooye&url=http://yoursite.com/2019/09/05/hello-world/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《HashMap实现原理分析》 — 走吧!! 去吃肉!!&url=https://gaooye.github.io/HashMap实现原理分析/&via=https://gaooye.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2019/09/05/hello-world/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gaooye.github.io/HashMap实现原理分析/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -485,7 +447,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACOUlEQVR42u3aS27jMBAFwNz/0hpgVgEypt4jlQFEFleG7cgqLTr9+/qKz/X3JO9f3077/qfvPHYwMDBey7iG5+ftjj/9dM2V342oGBgYBzDGwTR53UbC5KHkgR4DAwPjis/6I8DAwMB4KuCOkUnYHX8HAwMDY6WYbIPjXLL4i7U4BgbGCxntYOB/vv7F+QYGBsZLGNejZzwkaFtvxe9iYGBszRinfU9tOySklYIWAwPjHEa+5jUHzoedyfc/BlwMDIxNGW24zBPBtmWWh+MHoj4GBsarGCtDx3bYOReOEzYGBsbejOSmo0sMrzPXnsv/GWBgYJzAGCd/c8OAuUWxdv0CAwPjBEbeUMsZeWqYl803SScGBsaRjCTwza1QrI8cbspXDAyM7RhtMZm38tskL2/M3YwwMTAwDmCsLD2M08RnQ3w9o8DAwHghoygRpxa5ElIeXm9msBgYGJsy2gA6l+rNPaZ6rw0DA2NrxlwyNxeIkwDajksxMDDOYazsaOSNtnZRo2i3YWBgHMPI2/TtSKBN/tqBAQYGxgmM5BIr62JzI9IiMcXAwNia0Q4y25WvtqBdGUVgYGDsx7jKM5cgtssZbbmLgYGxN2MlzK2XrPmQ4KlgjYGB8V5Gvh7Rtu2ebbTVO24YGBjbMeaq3jx+tw+l3abAwMDAyBe5Vtpz+WD1H/eMgYGBESd87dgg/62be8DAwDiAkRSx7Wrp+K/G168LaQwMjK0ZK5sac221leFo3tTDwMDYgvEHtBZLqTq3YV0AAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3awa6dMAwFwPf/P023lVrQOQ6tRDJZoQuCzF1Yduyfn3hdv632medf/rx+/srSwsDA+CzjelzPz9zdvdvWMzX/7l+oGBgYBzDuIljyzMrmkhD8vDcMDAyM5NVXsBIABgYGxrsBty01kxI3QWJgYJzMSAJle90mfM/vea0Wx8DA+CAjD5f///qf9DcwMDA+xbjKlR/3z7Z1jRYGBsbejPwzedsyh62kfRgYGOcw8jGIdwfIZqMYt79gYGAcxpiF1/XGwFK6iYGBsTVj/Zg+f2bWPMj3hoGBcRojT9rau+1YWDECgoGBcQCjxbQjGu1gR11UY2BgHMBok7/273i3tVmcHWJgYGzBWClQ8zJ1llbmYRoDA+MERhtYZ42B/FvFQRsGBsYBjLzUbI/YVhoPxbAFBgbGAYw2pK6Ezny04oVAj4GBsRFjNjyxUvSuYG6fxMDA2JrRpmj5sVebVs6aoBgYGCcw8pCaD37lZW07VDHsbGBgYGzBWK9922GvWTEczYxgYGBsykhKynYwYha4hy0BDAyMAxjt9SxNTA7pZgEdAwNjV8ZVrrZt0CaUw3diYGBszXi3QM3D9MrB3AtTJBgYGB9krAfZPETOGqXRoBgGBsYBjFnTMT++bwcv8tCPgYGB0aZrybH+rMEQ+TAwMDDiMYhZ+G4TytcCLgYGxkcYK0NdsyQy+SOKAzsMDIytGW3e9ULBWfYr8jdgYGBsx/gFQ1wi4NK+niQAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
