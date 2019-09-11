@@ -98,6 +98,12 @@
                 </a>
               </li>
             
+              <li>
+                <a href="/img/banner" target="_blank">
+                  <i class="icon icon-lg icon-copyright"></i>
+                </a>
+              </li>
+            
         </ul>
         
       </div>
@@ -108,42 +114,42 @@
             <li class="">
               <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
-                ▜首 页
+                Home Page
               </a>
             </li>
         
             <li class="">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archive"></i>
-                文 章
+                Note
               </a>
             </li>
         
             <li class="">
               <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
-                分 类
+                Categories
               </a>
             </li>
         
             <li class="">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
-                标 签
+                Tags
               </a>
             </li>
         
             <li class=" active">
               <a href="/about"  >
                 <i class="icon icon-lg icon-user-o"></i>
-                关于俺
+                About Me
               </a>
             </li>
         
             <li class="">
               <a href="/share"  >
-                <i class="icon icon-lg icon-⬢"></i>
-                分享生活
+                <i class="icon icon-lg icon-smile-o"></i>
+                Share Love
               </a>
             </li>
         
@@ -454,10 +460,10 @@
         var OriginTitile = document.title, titleTime;
         document.addEventListener('visibilitychange', function() {
             if (document.hidden) {
-                document.title = '喔走开一下！';
+                document.title = 'eiei,我不见了！';
                 clearTimeout(titleTime);
             } else {
-                document.title = '喔回来了！';
+                document.title = 'eiei,我又回来了！';
                 titleTime = setTimeout(function() {
                     document.title = OriginTitile;
                 },2000);

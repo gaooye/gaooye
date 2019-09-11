@@ -98,6 +98,12 @@
                 </a>
               </li>
             
+              <li>
+                <a href="/img/banner" target="_blank">
+                  <i class="icon icon-lg icon-copyright"></i>
+                </a>
+              </li>
+            
         </ul>
         
       </div>
@@ -108,42 +114,42 @@
             <li class="">
               <a href="/"  >
                 <i class="icon icon-lg icon-home"></i>
-                ▜首 页
+                Home Page
               </a>
             </li>
         
             <li class="">
               <a href="/archives"  >
                 <i class="icon icon-lg icon-archive"></i>
-                文 章
+                Note
               </a>
             </li>
         
             <li class=" active">
               <a href="/categories"  >
                 <i class="icon icon-lg icon-th-list"></i>
-                分 类
+                Categories
               </a>
             </li>
         
             <li class="">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
-                标 签
+                Tags
               </a>
             </li>
         
             <li class="">
               <a href="/about"  >
                 <i class="icon icon-lg icon-user-o"></i>
-                关于俺
+                About Me
               </a>
             </li>
         
             <li class="">
               <a href="/share"  >
-                <i class="icon icon-lg icon-⬢"></i>
-                分享生活
+                <i class="icon icon-lg icon-smile-o"></i>
+                Share Love
               </a>
             </li>
         
@@ -184,28 +190,28 @@
         <a href="/categories" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
             ">All</a>
         
-            <a href="/categories/HashMap/" backup-style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">HashMap</a>
-            
-        
-            <a href="/categories/单例模式/" backup-style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">单例模式</a>
-            
-        
-            <a href="/categories/HashMap/集合/" backup-style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">集合</a>
-            
-        
-            <a href="/categories/单例模式/线程安全/" backup-style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">线程安全</a>
+            <a href="/categories/HashMap/" backup-style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light">HashMap</a>
             
         
             <a href="/categories/多线程/" backup-style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light active">多线程</a>
             
         
-            <a href="/categories/多线程/线程安全/" backup-style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light active">线程安全</a>
+            <a href="/categories/HashMap/集合/" backup-style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">集合</a>
             
         
-            <a href="/categories/Spring-MVC/" backup-style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">Spring MVC</a>
+            <a href="/categories/多线程/线程安全/" backup-style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light active">线程安全</a>
             
         
-            <a href="/categories/Spring-MVC/注解/" backup-style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">注解</a>
+            <a href="/categories/单例模式/" backup-style="-webkit-order:4;order:4" class="tags-list-item waves-effect waves-button waves-light">单例模式</a>
+            
+        
+            <a href="/categories/单例模式/线程安全/" backup-style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">线程安全</a>
+            
+        
+            <a href="/categories/Spring-MVC/" backup-style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">Spring MVC</a>
+            
+        
+            <a href="/categories/Spring-MVC/注解/" backup-style="-webkit-order:7;order:7" class="tags-list-item waves-effect waves-button waves-light">注解</a>
             
         
     </nav>
@@ -450,10 +456,10 @@
         var OriginTitile = document.title, titleTime;
         document.addEventListener('visibilitychange', function() {
             if (document.hidden) {
-                document.title = '喔走开一下！';
+                document.title = 'eiei,我不见了！';
                 clearTimeout(titleTime);
             } else {
-                document.title = '喔回来了！';
+                document.title = 'eiei,我又回来了！';
                 titleTime = setTimeout(function() {
                     document.title = OriginTitile;
                 },2000);
