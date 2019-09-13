@@ -39,6 +39,18 @@
 <p><code>FixedThreadPool</code>:定长的线程池，有核心线程，核心线程的即为最大的线程数量，没有非核心线程</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 线程池 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 线程池 </tag>
+            
+        </tags>
         
     </entry>
     
