@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     
     
-    <title>标 签: 集合 | 勇敢的立 F L A G ！</title>
+    <title>勇敢的立 F L A G ！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="keywords" content>
@@ -132,7 +132,7 @@
               </a>
             </li>
         
-            <li class=" active">
+            <li class="">
               <a href="/tags"  >
                 <i class="icon icon-lg icon-tags"></i>
                 Tags
@@ -159,13 +159,14 @@
 </aside>
 
     <main id="main">
-        <header class="top-header" id="header">
+        
+    <header class="top-header" id="header">
     <div class="flex-row clearfix">
         <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>标 签: 集合</span>
+            <span>勇敢的立 F L A G ！</span>
             
         </div>
         
@@ -175,40 +176,18 @@
         
     </div>
 </header>
-<header class="content-header tags-header">
+<header class="content-header index-header">
     <img src="/img/微信图片_20190910190120.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">标 签: 集合</h1>
+        <h1 class="title">勇敢的立 F L A G ！</h1>
         <h5 class="subtitle">
+            
+                
             
         </h5>
         
     </div>
     
-<div class="tabs-bar container">
-    <nav class="tags-list">
-        <a href="/tags" style="-webkit-order:-1;order:-1" class="tags-list-item waves-effect waves-button waves-light
-            ">All</a>
-        
-            <a href="/tags/集合/" backup-style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light active">集合</a>
-            
-        
-            <a href="/tags/多线程/" backup-style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light">多线程</a>
-            
-        
-            <a href="/tags/SSM/" backup-style="-webkit-order:2;order:2" class="tags-list-item waves-effect waves-button waves-light">SSM</a>
-            
-        
-            <a href="/tags/设计模式/" backup-style="-webkit-order:3;order:3" class="tags-list-item waves-effect waves-button waves-light">设计模式</a>
-            
-        
-    </nav>
-    <!-- PC show more-->
-    <div class="tags-list-more">
-        <a href="javascript:;" class="action tags-list-item waves-effect waves-circle waves-light"><i class="icon icon-ellipsis-h"></i></a>
-    </div>
-</div>
-
 
 </header>
 
@@ -225,26 +204,21 @@
     <div id="local-search-result"></div>
 </div>
 
-<div class="container body-wrap fade">
+    <div class="container body-wrap">
+        <ul class="post-list">
+        
+            <li class="post-list-item fade">
+                <article id="post-2019/09/07/HashMap实现原理分析"
+  class="article-card article-type-post" itemprop="blogPost">
+  
     
-            <div class="waterfall">
-                
-                <div class="waterfall-item">
-  <article class="article-card archive-article">
-    <div class="post-meta">
-      <time class="post-time" title="2019-09-06 23:40:58" datetime="2019-09-06T15:40:58.000Z"  itemprop="datePublished">2019-09-06</time>
-
-      
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/HashMap/">HashMap</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/HashMap/集合/">集合</a></li></ul></li></ul>
-
-
-
-    </div>
     
+    
+        
 
 
   
-    <h3 class="post-title " itemprop="name">
+    <h3 class="post-title re-title" itemprop="name">
       <a class="post-title-link" href="/2019/09/07/HashMap实现原理分析/">HashMap实现原理分析</a>
     </h3>
   
@@ -252,20 +226,55 @@
 
 
     
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/集合/">集合</a></li></ul>
+    <div class="post-meta">
+        <time class="post-time" title="2019-09-06 23:40:58" datetime="2019-09-06T15:40:58.000Z"  itemprop="datePublished">2019-09-06</time>
 
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/HashMap/">HashMap</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/HashMap/集合/">集合</a></li></ul></li></ul>
+
+
+
+        
+
+        
+
+
+        
+        
     </div>
     
-  </article>
-</div>
-        
-            </div>
-        
+    <div class="post-content" id="post-content" itemprop="postContent">
     
+    
+        1. HashMap的数据结构数据结构中有数组和链表来实现对数据的存储，但这两者基本上是两个极端。
+数组数组存储区间是连续的，占用内存严重，故空间复杂的很大。但数组的二分查找时间复杂度小，为O(1)；数组的特点是：寻址容易，插入和删除困难；
+链表链表存储区间离散，占用内存比较宽松，故空间复杂度很小，但时间复杂度很大，达O（N）。链表的特点是：寻址困难，插入和删除容易。
+哈希表那么我们能不能综合两者的特性，做出一种寻址容易，插入删除也容易的数据结构？答案是肯定的，这就是我们要提起的哈希表。哈...
+    
+    <a href="/2019/09/07/HashMap实现原理分析/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/集合/">集合</a></li></ul>
+
 </div>
 
+
+            </li>
+        
+        </ul>
+        
+<nav id="page-nav">
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </div>
+</nav>
+
+    </div>
 
     </main>
     <footer class="footer ">
@@ -327,7 +336,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gaooye.github.io/tags/集合/&title=勇敢的立 F L A G ！&pic=https://gaooye.github.io/img/girl.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gaooye.github.io/page/2/&title=勇敢的立 F L A G ！&pic=https://gaooye.github.io/img/girl.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -339,25 +348,25 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gaooye.github.io/tags/集合/&title=勇敢的立 F L A G ！&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gaooye.github.io/page/2/&title=勇敢的立 F L A G ！&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gaooye.github.io/tags/集合/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gaooye.github.io/page/2/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=勇敢的立 F L A G ！&url=https://gaooye.github.io/tags/集合/&via=https://gaooye.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=勇敢的立 F L A G ！&url=https://gaooye.github.io/page/2/&via=https://gaooye.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gaooye.github.io/tags/集合/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gaooye.github.io/page/2/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -369,7 +378,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxElEQVR42u3awW7CMBAEUP7/p+m1Upsws4kNrZ5PCIX4mcPKnvXjEY/nt5E/ef588rbhwMXFvcx9no7zZ9pFtu//ZRZcXNyN3PNC8/OZ/Jujic/ff/g9Li7uB3NnpfC8wOHi4v4PbsJqf4WLi/s53LwMzWKU2eEKFxf3Xdx8+nWfl+S7uLi4I+6zHLOFtWXrcHZcXNwt3LygnKNXtGAP34yLi7uRu6LozK5fDM9quLi4t3LbtuhsmvyqVrHBwsXF3cg9n+CuZeRtGFxc3J3cNgppS1WCK96Ji4u7hTu7MtUWu1nk+uKshouLu5ibb1PaJV2PUaIsBxcXdzE3iTXbspVva4rgFRcXdxl3VlCSgKO9njU8q+Hi4i7gJqFGi7hy7KmTXVxc3GXcoqk5ujaRl60oUsHFxd3ObZuj7SHnhtgFFxd3I/d68DE8xsSFEhcXdw/3SsMjL0/tlqjovuLi4i7gtlHFbMuSF8d2wbi4uOu4s4sRbYR65XCFi4v7Lu6sA5O3XWeHH1xc3L/FvQJtN0z1DTJcXNw3cfO2SpHdJkJcXNyN3DwknVWVvMC9+LNwcXG3cNtSkhe1Ky2WG/JdXFzcCfcLaSIBL3I402IAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABx0lEQVR42u3aQWrEMBAEQP//0841kKzTLdmDA6XTsgi57EOjGek44nF+GNczk9WOJwYuLu4297wc3+fsPP7nap/++eOj4OLiDnLbByRpk+ByAy4u7pu57cOu18HFxf3v3ISys+nBxcV9GzeJqrYt8mnmUK2Gi4u7wV0rZu79/Uh/FxcXd4l7bozrjUgbc9ETcXFxR7ht6LSlzvU/yXbql3VwcXHHuW3cJNykSZqviYuL+zQ3aYnmQZbHU/vauLi489w8YpKjkbzxUW9xcHFxx7k7DdP2+KQ9sj3a22G4uLjb3P1ypQ2v9goXLi7uJPeu8Nq54LU2ExcX9zlu0hZp2yVrhyjJfFxc3EnuPjRvmqw1ZCMWLi7urdy8CInipoy8IhBxcXFHuHlV1L5AXiDlMYqLizvDTWJl7cpF3YMJ1sfFxZ3h7oTUXZuY5GPh4uJOcs9y5GGXX7cqjmlxcXFHuO3mo0W3DdO2JMPFxX2Om4RXW9isHcZEL4OLizvIXWxSBNuX/eKnaJvi4uKOc9voSVao92K4uLgv4669Uttw2TpqxcXFvZXbFj/tNYv2KPfmWg0XF7fkthcjivPbpZV3LnDg4uJuc78ABuu0e4hJATcAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

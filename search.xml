@@ -3,6 +3,46 @@
   
     
     <entry>
+      <title><![CDATA[线程池的原理]]></title>
+      <url>/2019/09/13/%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%8E%9F%E7%90%86/</url>
+      <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一、线程池的技术背景"><a href="#一、线程池的技术背景" class="headerlink" title="一、线程池的技术背景"></a>一、线程池的技术背景</h2><p>在一个应用程序中，我们需要多次使用线程，也就意味着，我们需要多次创建并销毁线程。而创建并销毁线程的过程势必会消耗内存。而在Java中，内存资源是及其宝贵的，于是，线程池技术的概念由此产生。</p>
+<p><strong>线程池</strong>：Java中开辟出了一种管理线程的概念，这个概念叫做线程池，从概念以及应用场景中，更通俗的将线程池就是存储线程对象的容器，我们可以看出，线程池的好处，就是可以方便的管理线程，节省了许多线程使用前后的消耗。</p>
+<h2 id="二、ThreadPoolExecutor类的核心参数"><a href="#二、ThreadPoolExecutor类的核心参数" class="headerlink" title="二、ThreadPoolExecutor类的核心参数"></a>二、ThreadPoolExecutor类的核心参数</h2><p>那么，我们应该如何创建一个线程池那?Java中已经提供了创建线程池的一个类：Executor</p>
+<p>而我们创建时，一般使用它的子类：<code>ThreadPoolExecutor.</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ThreadPoolExecutor</span><span class="params">(<span class="keyword">int</span> corePoolSize,  </span></span></span><br><span class="line"><span class="function"><span class="params">                              <span class="keyword">int</span> maximumPoolSize,  </span></span></span><br><span class="line"><span class="function"><span class="params">                              <span class="keyword">long</span> keepAliveTime,  </span></span></span><br><span class="line"><span class="function"><span class="params">                              TimeUnit unit,  </span></span></span><br><span class="line"><span class="function"><span class="params">                              BlockingQueue&lt;Runnable&gt; workQueue,  </span></span></span><br><span class="line"><span class="function"><span class="params">                              ThreadFactory threadFactory,  </span></span></span><br><span class="line"><span class="function"><span class="params">                              RejectedExecutionHandler handler</span></span></span><br><span class="line"><span class="function"><span class="params">                          )</span></span></span><br></pre></td></tr></table></figure>
+
+<p>这是其中最重要的一个构造方法，这个方法决定了创建出来的线程池的各种属性，下面依靠一张图来更好的理解线程池和这几个参数：</p>
+<figure class="image-box">
+                <img src="image_1402.jpg" alt="线程池核心参数" title class>
+                <p>线程池核心参数</p>
+            </figure>
+<p>由图中，我们可以看出，线程池中的<code>corePoolSize</code>就是线程池中的核心线程数量，这几个核心线程，只是在没有用的时候，也不会被回收，<code>maximumPoolSize</code>就是线程池中可以容纳的最大线程的数量，而<code>keepAliveTime</code>，就是线程池中除了核心线程之外的其他的最长可以保留的时间，因为在线程池中，除了核心线程即使在无任务的情况下也不能被清除，其余的都是有存活时间的，意思就是非核心线程可以保留的最长的空闲时间，而<code>unit</code>，就是计算这个时间的一个单位，<code>workQueue</code>，就是等待队列，任务可以储存在任务队列中等待被执行，执行的是FIFIO原则（先进先出）。<code>threadFactory</code>，就是创建线程的线程工厂，最后一个<code>handler</code>,是一种拒绝策略，我们可以在任务满了之后，拒绝执行某些任务。</p>
+<h2 id="三、线程池执行流程"><a href="#三、线程池执行流程" class="headerlink" title="三、线程池执行流程"></a>三、线程池执行流程</h2><p>线程池的执行流程又是怎样的呢？</p>
+<figure class="image-box">
+                <img src="1568346916(1).jpg" alt title class>
+                <p></p>
+            </figure>
+<p>先判断线程池中<strong><code>核心线程池</code></strong>所有的线程是否都在执行任务。如果不是，则新创建一个线程执行刚提交的任务，否则，核心线程池中所有的线程都在执行任务，则进入第2步；<br>判断当前<strong><code>阻塞队列</code></strong>是否已满，如果未满，则将提交的任务放置在阻塞队列中；否则，则进入第3步；<br>判断<strong><code>线程池中所有的线程</code></strong>是否都在执行任务，如果没有，则创建一个新的线程来执行任务，否则，则交给饱和策略进行处理</p>
+<h3 id="handler的拒绝策略："><a href="#handler的拒绝策略：" class="headerlink" title="handler的拒绝策略："></a>handler的拒绝策略：</h3><p>有四种：</p>
+<blockquote>
+<p>第一种AbortPolicy:不执行新任务，直接抛出异常，提示线程池已满</p>
+</blockquote>
+<blockquote>
+<p>第二种DisCardPolicy:不执行新任务，也不抛出异常  </p>
+</blockquote>
+<blockquote>
+<p>第三种DisCardOldSetPolicy:将消息队列中的第一个任务替换为当前新进来的任务执行<br>第四种CallerRunsPolicy:直接调用execute来执行当前任务</p>
+</blockquote>
+<h2 id="四、四种常见的线程池："><a href="#四、四种常见的线程池：" class="headerlink" title="四、四种常见的线程池："></a>四、四种常见的线程池：</h2><p><code>CachedThreadPool</code>:可缓存的线程池，该线程池中没有核心线程，非核心线程的数量为Integer.max_value，就是无限大，当有需要时创建线程来执行任务，没有需要时回收线程，适用于耗时少，任务量大的情况。</p>
+<p><code>SecudleThreadPool</code>:周期性执行任务的线程池，按照某种特定的计划执行线程中的任务，有核心线程，但也有非核心线程，非核心线程的大小也为无限大。适用于执行周期性的任务。</p>
+<p><code>SingleThreadPool</code>:只有一条线程来执行任务，适用于有顺序的任务的应用场景。</p>
+<p><code>FixedThreadPool</code>:定长的线程池，有核心线程，核心线程的即为最大的线程数量，没有非核心线程</p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[线程安全的单例模式]]></title>
       <url>/2019/09/09/%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="实现线程安全的单例模式"><a href="#实现线程安全的单例模式" class="headerlink" title="实现线程安全的单例模式"></a>实现线程安全的单例模式</h2><p><strong>懒汉式的单例模式，在调用方法首次获取类的实例的时候才实例化对象，因此并不是线程安全的：</strong><br><strong>实现线程安全方式</strong>：</p>

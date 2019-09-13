@@ -208,6 +208,56 @@
         <ul class="post-list">
         
             <li class="post-list-item fade">
+                <article id="post-2019/09/13/线程池的原理"
+  class="article-card article-type-post" itemprop="blogPost">
+  
+    
+    
+    
+        
+
+
+  
+    <h3 class="post-title re-title" itemprop="name">
+      <a class="post-title-link" href="/2019/09/13/线程池的原理/">线程池的原理</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-meta">
+        <time class="post-time" title="2019-09-13 11:05:38" datetime="2019-09-13T03:05:38.000Z"  itemprop="datePublished">2019-09-13</time>
+
+        
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        一、线程池的技术背景在一个应用程序中，我们需要多次使用线程，也就意味着，我们需要多次创建并销毁线程。而创建并销毁线程的过程势必会消耗内存。而在Java中，内存资源是及其宝贵的，于是，线程池技术的概念由此产生。
+线程池：Java中开辟出了一种管理线程的概念，这个概念叫做线程池，从概念以及应用场景中，更通俗的将线程池就是存储线程对象的容器，我们可以看出，线程池的好处，就是可以方便的管理线程，节省了许多线程使用前后的消耗。
+二、ThreadPoolExecutor类的核心参数那么，我们应该如何创...
+    
+    <a href="/2019/09/13/线程池的原理/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
                 <article id="post-2019/09/09/线程安全的单例模式"
   class="article-card article-type-post" itemprop="blogPost">
   
@@ -381,67 +431,14 @@ Java双重校验锁（double checked locking）123456789101112131415161718public
 
             </li>
         
-            <li class="post-list-item fade">
-                <article id="post-2019/09/07/HashMap实现原理分析"
-  class="article-card article-type-post" itemprop="blogPost">
-  
-    
-    
-    
-        
-
-
-  
-    <h3 class="post-title re-title" itemprop="name">
-      <a class="post-title-link" href="/2019/09/07/HashMap实现原理分析/">HashMap实现原理分析</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-meta">
-        <time class="post-time" title="2019-09-06 23:40:58" datetime="2019-09-06T15:40:58.000Z"  itemprop="datePublished">2019-09-06</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/HashMap/">HashMap</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/HashMap/集合/">集合</a></li></ul></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        1. HashMap的数据结构数据结构中有数组和链表来实现对数据的存储，但这两者基本上是两个极端。
-数组数组存储区间是连续的，占用内存严重，故空间复杂的很大。但数组的二分查找时间复杂度小，为O(1)；数组的特点是：寻址容易，插入和删除困难；
-链表链表存储区间离散，占用内存比较宽松，故空间复杂度很小，但时间复杂度很大，达O（N）。链表的特点是：寻址困难，插入和删除容易。
-哈希表那么我们能不能综合两者的特性，做出一种寻址容易，插入删除也容易的数据结构？答案是肯定的，这就是我们要提起的哈希表。哈...
-    
-    <a href="/2019/09/07/HashMap实现原理分析/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/集合/">集合</a></li></ul>
-
-</div>
-
-
-            </li>
-        
         </ul>
         
+<nav id="page-nav">
+    <div class="inner">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    </div>
+</nav>
+
     </div>
 
     </main>

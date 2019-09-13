@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>线程池的原理 | 勇敢的立 F L A G ！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content>
+    <link rel="shortcut icon" href="/img/feather_pen_64px_1231006_easyicon.net.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"说点什么...","avatar":"msg"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/微信图片_20190910153545.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/girl.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">gaooye`s blog</h5>
+          <a href="mailto:839325540@qq.com" title="839325540@qq.com" class="mail">
+            
+              <span>8</span>
+            
+              <span>3</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>2</span>
+            
+              <span>5</span>
+            
+              <span>5</span>
+            
+              <span>4</span>
+            
+              <span>0</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/gaooye" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+              <li>
+                <a href="/img/reward-wechat.jpg " target="_blank">
+                  <i class="icon icon-lg icon-wechat"></i>
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://blog.csdn.net/weixin_42002656" target="_blank">
+                  <i class="icon icon-lg icon-copyright"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home Page
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archive"></i>
+                Note
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-large"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-o"></i>
+                About Me
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/share"  >
+                <i class="icon icon-lg icon-smile-o"></i>
+                Love and Share
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>线程池的原理</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/微信图片_20190910190120.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">线程池的原理</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-09-13T03:05:38.000Z" itemprop="datePublished" class="page-time">
+  2019-09-13
+</time>
+
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-2019/09/13/线程池的原理"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">线程池的原理</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-09-13 11:05:38" datetime="2019-09-13T03:05:38.000Z"  itemprop="datePublished">2019-09-13</time>
+
+            
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h2 id="一、线程池的技术背景"><a href="#一、线程池的技术背景" class="headerlink" title="一、线程池的技术背景"></a>一、线程池的技术背景</h2><p>在一个应用程序中，我们需要多次使用线程，也就意味着，我们需要多次创建并销毁线程。而创建并销毁线程的过程势必会消耗内存。而在Java中，内存资源是及其宝贵的，于是，线程池技术的概念由此产生。</p>
+<p><strong>线程池</strong>：Java中开辟出了一种管理线程的概念，这个概念叫做线程池，从概念以及应用场景中，更通俗的将线程池就是存储线程对象的容器，我们可以看出，线程池的好处，就是可以方便的管理线程，节省了许多线程使用前后的消耗。</p>
+<h2 id="二、ThreadPoolExecutor类的核心参数"><a href="#二、ThreadPoolExecutor类的核心参数" class="headerlink" title="二、ThreadPoolExecutor类的核心参数"></a>二、ThreadPoolExecutor类的核心参数</h2><p>那么，我们应该如何创建一个线程池那?Java中已经提供了创建线程池的一个类：Executor</p>
+<p>而我们创建时，一般使用它的子类：<code>ThreadPoolExecutor.</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ThreadPoolExecutor</span><span class="params">(<span class="keyword">int</span> corePoolSize,  </span></span></span><br><span class="line"><span class="function"><span class="params">                              <span class="keyword">int</span> maximumPoolSize,  </span></span></span><br><span class="line"><span class="function"><span class="params">                              <span class="keyword">long</span> keepAliveTime,  </span></span></span><br><span class="line"><span class="function"><span class="params">                              TimeUnit unit,  </span></span></span><br><span class="line"><span class="function"><span class="params">                              BlockingQueue&lt;Runnable&gt; workQueue,  </span></span></span><br><span class="line"><span class="function"><span class="params">                              ThreadFactory threadFactory,  </span></span></span><br><span class="line"><span class="function"><span class="params">                              RejectedExecutionHandler handler</span></span></span><br><span class="line"><span class="function"><span class="params">                          )</span></span></span><br></pre></td></tr></table></figure>
+
+<p>这是其中最重要的一个构造方法，这个方法决定了创建出来的线程池的各种属性，下面依靠一张图来更好的理解线程池和这几个参数：</p>
+<figure class="image-box">
+                <a rel=线程池的原理 href="image_1402.jpg" title="线程池核心参数" data-fancybox="images"><img src="image_1402.jpg" alt="线程池核心参数" title class></a>
+                <p>线程池核心参数</p>
+            </figure>
+<p>由图中，我们可以看出，线程池中的<code>corePoolSize</code>就是线程池中的核心线程数量，这几个核心线程，只是在没有用的时候，也不会被回收，<code>maximumPoolSize</code>就是线程池中可以容纳的最大线程的数量，而<code>keepAliveTime</code>，就是线程池中除了核心线程之外的其他的最长可以保留的时间，因为在线程池中，除了核心线程即使在无任务的情况下也不能被清除，其余的都是有存活时间的，意思就是非核心线程可以保留的最长的空闲时间，而<code>unit</code>，就是计算这个时间的一个单位，<code>workQueue</code>，就是等待队列，任务可以储存在任务队列中等待被执行，执行的是FIFIO原则（先进先出）。<code>threadFactory</code>，就是创建线程的线程工厂，最后一个<code>handler</code>,是一种拒绝策略，我们可以在任务满了之后，拒绝执行某些任务。</p>
+<h2 id="三、线程池执行流程"><a href="#三、线程池执行流程" class="headerlink" title="三、线程池执行流程"></a>三、线程池执行流程</h2><p>线程池的执行流程又是怎样的呢？</p>
+<figure class="image-box">
+                <a rel=线程池的原理 href="1568346916(1).jpg" title="" data-fancybox="images"><img src="1568346916(1).jpg" alt title class></a>
+                <p></p>
+            </figure>
+<p>先判断线程池中<strong><code>核心线程池</code></strong>所有的线程是否都在执行任务。如果不是，则新创建一个线程执行刚提交的任务，否则，核心线程池中所有的线程都在执行任务，则进入第2步；<br>判断当前<strong><code>阻塞队列</code></strong>是否已满，如果未满，则将提交的任务放置在阻塞队列中；否则，则进入第3步；<br>判断<strong><code>线程池中所有的线程</code></strong>是否都在执行任务，如果没有，则创建一个新的线程来执行任务，否则，则交给饱和策略进行处理</p>
+<h3 id="handler的拒绝策略："><a href="#handler的拒绝策略：" class="headerlink" title="handler的拒绝策略："></a>handler的拒绝策略：</h3><p>有四种：</p>
+<blockquote>
+<p>第一种AbortPolicy:不执行新任务，直接抛出异常，提示线程池已满</p>
+</blockquote>
+<blockquote>
+<p>第二种DisCardPolicy:不执行新任务，也不抛出异常  </p>
+</blockquote>
+<blockquote>
+<p>第三种DisCardOldSetPolicy:将消息队列中的第一个任务替换为当前新进来的任务执行<br>第四种CallerRunsPolicy:直接调用execute来执行当前任务</p>
+</blockquote>
+<h2 id="四、四种常见的线程池："><a href="#四、四种常见的线程池：" class="headerlink" title="四、四种常见的线程池："></a>四、四种常见的线程池：</h2><p><code>CachedThreadPool</code>:可缓存的线程池，该线程池中没有核心线程，非核心线程的数量为Integer.max_value，就是无限大，当有需要时创建线程来执行任务，没有需要时回收线程，适用于耗时少，任务量大的情况。</p>
+<p><code>SecudleThreadPool</code>:周期性执行任务的线程池，按照某种特定的计划执行线程中的任务，有核心线程，但也有非核心线程，非核心线程的大小也为无限大。适用于执行周期性的任务。</p>
+<p><code>SingleThreadPool</code>:只有一条线程来执行任务，适用于有顺序的任务的应用场景。</p>
+<p><code>FixedThreadPool</code>:定长的线程池，有核心线程，核心线程的即为最大的线程数量，没有非核心线程</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-09-13T04:09:27.338Z" itemprop="dateUpdated">2019-09-13 12:09:27</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/09/13/线程池的原理/" target="_blank" rel="external">https://gaooye.github.io/2019/09/13/线程池的原理/</a>
+        
+    </div>
+    <footer>
+        <a href="https://gaooye.github.io">
+            <img src="/img/girl.jpg" alt="gaooye`s blog">
+            gaooye`s blog
+        </a>
+    </footer>
+</blockquote>
+
+        
+        <div class="post-footer">
+            
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gaooye.github.io/2019/09/13/线程池的原理/&title=《线程池的原理》 — 勇敢的立 F L A G ！&pic=https://gaooye.github.io/img/girl.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gaooye.github.io/2019/09/13/线程池的原理/&title=《线程池的原理》 — 勇敢的立 F L A G ！&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gaooye.github.io/2019/09/13/线程池的原理/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《线程池的原理》 — 勇敢的立 F L A G ！&url=https://gaooye.github.io/2019/09/13/线程池的原理/&via=https://gaooye.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gaooye.github.io/2019/09/13/线程池的原理/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/09/09/线程安全的单例模式/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">线程安全的单例模式</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、线程池的技术背景"><span class="post-toc-text">一、线程池的技术背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、ThreadPoolExecutor类的核心参数"><span class="post-toc-text">二、ThreadPoolExecutor类的核心参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三、线程池执行流程"><span class="post-toc-text">三、线程池执行流程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#handler的拒绝策略："><span class="post-toc-text">handler的拒绝策略：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四、四种常见的线程池："><span class="post-toc-text">四、四种常见的线程池：</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                gaooye`s blog &copy; 2019
+            </span>
+        		
+           	
+           	<span>
+           		<a href="http://www.miitbeian.gov.cn/" target="_blank">搞嘢gaooye</a>
+           	</span>
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">访客小伙伴：
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">访问量：
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gaooye.github.io/2019/09/13/线程池的原理/&title=《线程池的原理》 — 勇敢的立 F L A G ！&pic=https://gaooye.github.io/img/girl.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gaooye.github.io/2019/09/13/线程池的原理/&title=《线程池的原理》 — 勇敢的立 F L A G ！&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gaooye.github.io/2019/09/13/线程池的原理/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《线程池的原理》 — 勇敢的立 F L A G ！&url=https://gaooye.github.io/2019/09/13/线程池的原理/&via=https://gaooye.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gaooye.github.io/2019/09/13/线程池的原理/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3aO3LjMBAFQN//0nK6VS5y38NQAYFG5KIlAa1gNB/8/MTr88+6f3L13uT53898eGFgYLyW8bldyVFazP3rr76sq7NhYGCcw0g2vg+F/9kmiJYJ8vI5BgYGxu3h7kPkWmDFwMDAWGNMDrQWTDEwMDDaIjYpL+cB9Ou1OAYGxgsZTxWZ3/j7K/MNDAyMVzE+S6tlTxp20XkwMDC2ZrRBcG1UkDfs1tJTDAyMvRlJE23SSksYk0Ac9ecwMDA2YiQfvdaGmzyvfzEwMDAOY0xSurXBZzskwMDAOIERJV5feM2zMAwMjL0Z7bHaq2BtOE4GD5e/GxgYGFszokIxGE9OvoIk6SxugmBgYGzEaJtueaN/DZxcC3ugd4iBgfFCRh618mFA3nrL23lFIMbAwNiIkQS7+eHa4WWdJmJgYBzGyNdaUji53hFNNjAwMLZm5Jck1gaWa0E8ehcGBsYxjKKZtVT0ToLvqIjFwMDYjlEkZGXKOL9mcXkGDAyMrRlJy6y9qJFf0WjTUAwMjDMZ7WCybZO1mPszXO6IgYGxNaMNuG2bbFIG518ZBgbG3oxPudoQuTY8yPfFwMA4gdFerWgPkTTd8ksbbeMPAwNjJ8a3L5vOQ3YyYMDAwDiB0Ra3bTr4VKoXtdswMDAOZrT55qTQrXfEwMDAiIvP/BDJf4sAjYGBcQAjL2LzgWXb28tbbw/U4hgYGK9iPLXBWsk6CdOL8w0MDIw3MX4Bf96EmqR+jU8AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = 'eiei,我不见了！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = 'eiei,我又回来了！';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+</body>
+</html>
