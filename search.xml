@@ -72,7 +72,7 @@
 </tr>
 <tr>
 <td align="center">复制到下一行</td>
-<td align="center">Ctrl + Shift + T</td>
+<td align="center">Ctrl + Shift + 上下</td>
 <td align="center">Ctrl + D</td>
 </tr>
 <tr>
@@ -129,6 +129,11 @@
 <td align="center">查找变量来源</td>
 <td align="center">F4</td>
 <td align="center">F4</td>
+</tr>
+<tr>
+<td align="center">重新编译</td>
+<td align="center"></td>
+<td align="center">CTRL+F9</td>
 </tr>
 </tbody></table>
 ]]></content>
