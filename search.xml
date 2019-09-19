@@ -7,7 +7,7 @@
       <url>/2019/09/15/Eclipse%E5%92%8CIDEA%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%AF%B9%E6%AF%94/</url>
       <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>之前的学习中一直使用的是Eclipse，可以说对Eclipse的快捷键已经很透了。最近准备适应IDEA的使用，也是应开发中可能出现更换IDE的需求，提前做好准备。一经上手，发现区别大了去了。不过IDEA真的是好用，不愧神器。</p>
 <p>记录一些常用的快捷键，方便查阅：</p>
-<table>
+<h2 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h2><table>
 <thead>
 <tr>
 <th align="center">功能</th>
@@ -45,13 +45,22 @@
 <td align="center">Ctrl + H</td>
 <td align="center">Ctrl + Shift + F</td>
 </tr>
+</tbody></table>
+<h2 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h2><table>
+<thead>
 <tr>
+<th align="center">功能</th>
+<th align="center">Eclipse快捷键</th>
+<th align="center">IDEA快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
 <td align="center">自动代码补全</td>
 <td align="center">Alt + /</td>
 <td align="center">Ctrl + J</td>
 </tr>
 <tr>
-<td align="center">自动代码生成（get、set等）</td>
+<td align="center">自动代码生成(get、set等)</td>
 <td align="center">ALT + SHIFT + S</td>
 <td align="center">Alt + Insert</td>
 </tr>
@@ -74,6 +83,11 @@
 <td align="center">复制到下一行</td>
 <td align="center">Ctrl + Shift + 上下</td>
 <td align="center">Ctrl + D</td>
+</tr>
+<tr>
+<td align="center">代码行上下移动</td>
+<td align="center">ALT + 上下键</td>
+<td align="center">CTRL + SHIFT + 上下键</td>
 </tr>
 <tr>
 <td align="center">注释/取消注释</td>
@@ -106,19 +120,23 @@
 <td align="center">Ctrl + Alt + O</td>
 </tr>
 <tr>
-<td align="center">显示类、方法说明</td>
-<td align="center">F2</td>
-<td align="center">Ctrl + Q</td>
-</tr>
-<tr>
 <td align="center">改名</td>
 <td align="center">Alt + Shift + R</td>
 <td align="center">Shift + F6</td>
 </tr>
+</tbody></table>
+<h2 id="跳转"><a href="#跳转" class="headerlink" title="跳转"></a>跳转</h2><table>
+<thead>
 <tr>
-<td align="center">代码行上下移动</td>
-<td align="center">ALT + 上下键</td>
-<td align="center">CTRL + SHIFT + 上下键</td>
+<th align="center">功能</th>
+<th align="center">Eclipse快捷键</th>
+<th align="center">IDEA快捷键</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">显示类、方法说明</td>
+<td align="center">F2</td>
+<td align="center">Ctrl + Q</td>
 </tr>
 <tr>
 <td align="center">打开光标所在处的类或方法</td>
