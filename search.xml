@@ -3,6 +3,92 @@
   
     
     <entry>
+      <title><![CDATA[加深对存储过程的理解和使用]]></title>
+      <url>/2019/09/19/%E5%8A%A0%E6%B7%B1%E5%AF%B9%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B%E7%9A%84%E7%90%86%E8%A7%A3%E5%92%8C%E4%BD%BF%E7%94%A8/</url>
+      <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>原文链接：<a href="https://blog.csdn.net/qq_35642036/article/details/82820098" target="_blank" rel="noopener">https://blog.csdn.net/qq_35642036/article/details/82820098</a></p>
+<h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><p>存储过程 (Stored Procedure) 是在大型数据库系统中 , 一组为了完成特定功能的 SQL 语句集 , 存储在数据库中 , 经过第一次编译后再次调用不需要再次编译 , 用户通过指定存储过程的名字并给出参数 (如果该存储过程带有参数) 来执行它 , 存储过程是数据库中的一个重要对象 ; 存储过程中可以包含 <code>逻辑控制语句</code> 和 <code>数据操纵语句</code> , 它可以接受参数 , 输出参数 , 返回单个或多个结果集以及返回值 ;</p>
+<h2 id="二、存储过程的优缺点"><a href="#二、存储过程的优缺点" class="headerlink" title="二、存储过程的优缺点"></a>二、存储过程的优缺点</h2><h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><ul>
+<li>存储过程可封装，并隐藏复杂的商业逻辑。</li>
+<li>存储过程可以回传值，并可以接受参数。</li>
+<li>存储过程无法使用 SELECT 指令来运行，因为它是子程序，与查看表，数据表或用户定义函数不同。</li>
+<li>存储过程可以用在数据检验，强制实行商业逻辑等。</li>
+</ul>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><ul>
+<li>存储过程，往往定制化于特定的数据库上，因为支持的编程语言不同。当切换到其他厂商的数据库系统时，需要重写原有的存储过程。</li>
+<li>存储过程的性能调校与撰写，受限于各种数据库系统。</li>
+</ul>
+<h2 id="三、编写简单存储过程"><a href="#三、编写简单存储过程" class="headerlink" title="三、编写简单存储过程"></a>三、编写简单存储过程</h2><h5 id="创建一个存储过程"><a href="#创建一个存储过程" class="headerlink" title="创建一个存储过程"></a>创建一个存储过程</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create procedure GetUsers()</span><br><span class="line">begin </span><br><span class="line">	select * from user; </span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<h5 id="调用存储过程"><a href="#调用存储过程" class="headerlink" title="调用存储过程"></a>调用存储过程</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">call GetUsers();</span><br></pre></td></tr></table></figure>
+
+<h5 id="删除存储过程"><a href="#删除存储过程" class="headerlink" title="删除存储过程"></a>删除存储过程</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop procedure GetUsers;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、存储过程的关键语法"><a href="#四、存储过程的关键语法" class="headerlink" title="四、存储过程的关键语法"></a>四、存储过程的关键语法</h2><p>声明语句结束符，可以自定义（作用第七节有说明）:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER $$</span><br><span class="line">或</span><br><span class="line">DELIMITER //</span><br></pre></td></tr></table></figure>
+
+<p>声明存储过程:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">PROCEDURE</span> demo_in_parameter(<span class="keyword">IN</span> p_in <span class="built_in">int</span>)</span><br></pre></td></tr></table></figure>
+
+<p>存储过程开始和结束符号:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BEGIN</span> .... <span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+
+<p>变量赋值:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> @p_in=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>变量定义:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DECLARE</span> l_int <span class="built_in">int</span> <span class="keyword">unsigned</span> <span class="keyword">default</span> <span class="number">4000000</span>;</span><br></pre></td></tr></table></figure>
+
+<p>创建mysql存储过程、存储函数:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> 存储过程名(参数)</span><br></pre></td></tr></table></figure>
+
+<p>存储过程体:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">function</span> 存储函数名(参数)</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、带参数的存储过程"><a href="#五、带参数的存储过程" class="headerlink" title="五、带参数的存储过程"></a>五、带参数的存储过程</h2><p>MySql 支持 IN (传递给存储过程) , OUT (从存储过程传出) 和 INOUT (对存储过程传入和传出) 类型的参数 , 存储过程的代码位于 BEGIN 和 END 语句内 , 它们是一系列 SQL 语句 , 用来检索值 , 然后保存到相应的变量 (通过指定INTO关键字) ;</p>
+<p>下面的存储过程接受三个参数 , 分别用于获取用户表的最小 , 平均 , 最大分数 , 每个参数必须具有指定的类型 , 这里使用十进制值(decimal(8,2)) , 关键字 OUT 指出相应的参数用来从存储过程传出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">create procedure GetScores(</span><br><span class="line">	out minScore decimal(8,2),</span><br><span class="line">	out avgScore decimal(8,2),</span><br><span class="line">	out maxScore decimal(8,2)</span><br><span class="line">)</span><br><span class="line">begin</span><br><span class="line">	select min(score) into minScore from user;</span><br><span class="line">	select avg(score) into avgScore from user;</span><br><span class="line">	select max(score) into maxScore from user;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>调用此存储过程 , 必须指定3个变量名(所有 MySql 变量都必须以 <code>@</code> 开始) , 如下所示 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">call GetScores(@minScore, @avgScore, @maxScore);</span><br></pre></td></tr></table></figure>
+
+<p>该调用并没有任何输出 , 只是把调用的结果赋给了调用时传入的变量 <code>@minScore, @avgScore, @maxScore</code> , 然后即可调用显示该变量的值 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select @minScore, @avgScore, @maxScore;</span><br></pre></td></tr></table></figure>
+
+<p>使用 IN 参数 , 输入一个用户 id , 返回该用户的名字 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create procedure GetNameByID(</span><br><span class="line">	in userID int,</span><br><span class="line">	out userName varchar(200)</span><br><span class="line">)</span><br><span class="line">begin</span><br><span class="line">	select name from user</span><br><span class="line">	where id = userID</span><br><span class="line">	into userName;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>调用存储过程 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">call GetNameByID(1, @userName);</span><br><span class="line">select @userName;</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、复杂一点示例"><a href="#六、复杂一点示例" class="headerlink" title="六、复杂一点示例"></a>六、复杂一点示例</h2><p>根据 ID 获取货品的价格 , 并根据参数判断是否折扣 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">create procedure GetPriceByID(</span><br><span class="line">	in prodID int,</span><br><span class="line">	in isDisc boolean,</span><br><span class="line">	out prodPrice decimal(8,2)</span><br><span class="line">) </span><br><span class="line">begin</span><br><span class="line">	declare tmpPrice decimal(8,2);</span><br><span class="line">	declare prodDiscRate decimal(8,2);</span><br><span class="line">	set prodDiscRate = 0.88;</span><br><span class="line"></span><br><span class="line">	select price from products</span><br><span class="line">	where id = prodID</span><br><span class="line">	into tmpPrice;</span><br><span class="line"></span><br><span class="line">	if isDisc then</span><br><span class="line">		select tmpPrice*prodDiscRate into tmpPrice;</span><br><span class="line">	end if;</span><br><span class="line"></span><br><span class="line">	select tmpPrice into prodPrice;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+
+<p>该存储过程传入三个参数 , 货品 ID , 是否折扣以及返回的价格 , 在存储过程内部 , 定义两个局部变量 tmpPrice 和 prodDiscRate , 把查询出来的结果赋给临时变量 , 再判断是否折扣 , 最后把局部变量的值赋给输出参数 ; 调用如下 :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">call GetPriceByID(1, true, @prodPrice);</span><br><span class="line">select @prodPrice;</span><br></pre></td></tr></table></figure>
+
+<h2 id="七、DELIMITER"><a href="#七、DELIMITER" class="headerlink" title="七、DELIMITER"></a>七、DELIMITER</h2><p>MySql 的命令行客户机的语句分隔符默认为分号 <code>;</code> ，而实用程序也是用 <code>;</code> 作为分隔符，这会使得存储过程的 SQL 出现语法错误，使用 <code>DELIMITER $$</code> 告诉命令行实用程序将 <code>$$</code> 作为新的语句结束分隔符，最后再使用 <code>DELIMITER ;</code> 改回来，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER $$ </span><br><span class="line">create procedure getUsers() begin select * from user; </span><br><span class="line">end $$ </span><br><span class="line">DELIMITER ;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">DELIMITER $$</span><br><span class="line">CREATE PROCEDURE getcount()</span><br><span class="line">BEGIN</span><br><span class="line">SELECT</span><br><span class="line">*</span><br><span class="line">FROM</span><br><span class="line">contract_user;</span><br><span class="line">END $$</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line">CALL getcount();</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      
+        <categories>
+            
+            <category> 存储过程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 储存过程 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Eclipse和IDEA快捷键对比]]></title>
       <url>/2019/09/15/Eclipse%E5%92%8CIDEA%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%AF%B9%E6%AF%94/</url>
       <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>之前的学习中一直使用的是Eclipse，可以说对Eclipse的快捷键已经很透了。最近准备适应IDEA的使用，也是应开发中可能出现更换IDE的需求，提前做好准备。一经上手，发现区别大了去了。不过IDEA真的是好用，不愧神器。</p>
