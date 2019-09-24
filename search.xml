@@ -3,6 +3,118 @@
   
     
     <entry>
+      <title><![CDATA[RESTful API]]></title>
+      <url>/2019/09/24/RESTful%E9%A3%8E%E6%A0%BC%E7%9A%84API/</url>
+      <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="什么是RESTful？"><a href="#什么是RESTful？" class="headerlink" title="什么是RESTful？"></a>什么是RESTful？</h3><p>REST 即<strong>REpresentational State Transfer</strong> 表现性状态转移。<br>是一种软件架构风格、设计风格，而不是标准，只是提供了一组设计原则和约束条件。它主要用于客户端和服务器交互类的软件。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存等机制。</p>
+<ul>
+<li><strong>表述性（REpresentational）：</strong> REST 资源实际上可以用各种形式来进行表述，包括 XML、JSON 甚至 HTML——最适合资源使用者的任意形式；</li>
+<li><strong>状态（State）：</strong> 当使用 REST 的时候，我们更关注资源的状态而不是对资源采取的行为；</li>
+<li><strong>转义（Transfer）：</strong> REST 涉及到转移资源数据，它以某种表述性形式从一个应用转移到另一个应用。</li>
+</ul>
+<p><strong>简单地说，REST 就是将资源的状态以适合客户端或服务端的形式从服务端转移到客户端（或者反过来）。</strong>在 REST 中，资源<strong>通过 URL 进行识别和定位</strong>，然后通过<strong>行为(即 HTTP 方法)</strong>来定义 REST 来完成怎样的功能。</p>
+<h4 id="4种行为对应的HTTP方法"><a href="#4种行为对应的HTTP方法" class="headerlink" title="4种行为对应的HTTP方法:"></a>4种行为对应的HTTP方法:</h4><p>在平时的 Web 开发中，method 常用的值是 GET 和 POST，但是实际上，HTTP 方法还有 PATCH、DELETE、PUT 等其他值，这些方法又通常会匹配为如下的 CRUD 动作:</p>
+<table>
+<thead>
+<tr>
+<th align="center">CRUD 动作</th>
+<th align="center">HTTP 方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Create</td>
+<td align="center">POST</td>
+</tr>
+<tr>
+<td align="center">Read</td>
+<td align="center">GET</td>
+</tr>
+<tr>
+<td align="center">Update</td>
+<td align="center">PUT 或 PATCH</td>
+</tr>
+<tr>
+<td align="center">Delete</td>
+<td align="center">DELETE</td>
+</tr>
+</tbody></table>
+<h3 id="为什么用RESTful-API？"><a href="#为什么用RESTful-API？" class="headerlink" title="为什么用RESTful API？"></a>为什么用RESTful API？</h3><p>在当今的互联网应用的前端展示媒介很丰富。有手机、有平板电脑还有PC以及其他的展示媒介。那么这些前端接收到的用户请求统一由一个后台来处理并返回给不同的前端肯定是最科学和最经济的方式，RESTful API就是一套协议来规范多种形式的前端和同一个后台的交互方式。</p>
+<h3 id="传统API与RESTful-API"><a href="#传统API与RESTful-API" class="headerlink" title="传统API与RESTful API"></a>传统API与RESTful API</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>传统风格</th>
+<th></th>
+<th>RESTful风格</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>url</td>
+<td>method</td>
+<td>url</td>
+<td>method</td>
+</tr>
+<tr>
+<td>增加</td>
+<td>/addEmployee</td>
+<td>POST</td>
+<td>/employee</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>删除</td>
+<td>/deleteEmployee?id=123</td>
+<td>GET</td>
+<td>/employee/123</td>
+<td>DELETE</td>
+</tr>
+<tr>
+<td>修改</td>
+<td>/updateEmployee?id=123&amp;name=zhang</td>
+<td>POST</td>
+<td>/employee/123/zhang</td>
+<td>PUT</td>
+</tr>
+<tr>
+<td>查询</td>
+<td>/listEmployee</td>
+<td>GET</td>
+<td>/employee</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>获取指定</td>
+<td>/getEmployee?id=123</td>
+<td>GET</td>
+<td>/employee/123</td>
+<td>GET</td>
+</tr>
+</tbody></table>
+<p>通过对比，RESTful的优势更加明显了，传统风格在编写时定义是任意的，如果开发人员在编写接口时命名意义不明确，其他调用接口的人员只能通过开发文档或者代码才能理解接口的调用和功能了。</p>
+<p>总结：简洁、统一、明确的编写方式就是RESTful API的特点。遵守RESTful风格API开发对开发效率的提高是极大的。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 接口 </category>
+            
+            <category> RESTful </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> RESTful </tag>
+            
+            <tag> 接口 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Spring Boot最核心注解]]></title>
       <url>/2019/09/22/SpringBoot%E6%9C%80%E6%A0%B8%E5%BF%83%E6%B3%A8%E8%A7%A3/</url>
       <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h1><p>Spring Boot方式的项目开发已经逐步成为Java应用开发领域的主流框架，它不仅可以方便地创建生产级的Spring应用程序，还能轻松地通过一些注解配置与目前比较火热的微服务框架SpringCloud集成。</p>

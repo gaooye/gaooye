@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>RESTful API | 勇敢的立 F L A G ！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="RESTful,接口">
+    <link rel="shortcut icon" href="/img/feather_pen_64px_1231006_easyicon.net.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"说点什么...","avatar":"msg"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/微信图片_20190910153545.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/girl.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">gaooye`s blog</h5>
+          <a href="mailto:839325540@qq.com" title="839325540@qq.com" class="mail">
+            
+              <span>8</span>
+            
+              <span>3</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>2</span>
+            
+              <span>5</span>
+            
+              <span>5</span>
+            
+              <span>4</span>
+            
+              <span>0</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/gaooye" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+              <li>
+                <a href="/img/reward-wechat.jpg " target="_blank">
+                  <i class="icon icon-lg icon-wechat"></i>
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://blog.csdn.net/weixin_42002656" target="_blank">
+                  <i class="icon icon-lg icon-copyright"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home Page
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archive"></i>
+                Note
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-large"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-o"></i>
+                F L A G！
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/share"  >
+                <i class="icon icon-lg icon-smile-o"></i>
+                Love and Share
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>RESTful API</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/微信图片_20190910190120.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">RESTful API</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-09-24T04:08:31.000Z" itemprop="datePublished" class="page-time">
+  2019-09-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/接口/">接口</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/接口/RESTful/">RESTful</a></li></ul></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-2019/09/24/RESTful风格的API"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">RESTful API</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-09-24 12:08:31" datetime="2019-09-24T04:08:31.000Z"  itemprop="datePublished">2019-09-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/接口/">接口</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/接口/RESTful/">RESTful</a></li></ul></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <h3 id="什么是RESTful？"><a href="#什么是RESTful？" class="headerlink" title="什么是RESTful？"></a>什么是RESTful？</h3><p>REST 即<strong>REpresentational State Transfer</strong> 表现性状态转移。<br>是一种软件架构风格、设计风格，而不是标准，只是提供了一组设计原则和约束条件。它主要用于客户端和服务器交互类的软件。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存等机制。</p>
+<ul>
+<li><strong>表述性（REpresentational）：</strong> REST 资源实际上可以用各种形式来进行表述，包括 XML、JSON 甚至 HTML——最适合资源使用者的任意形式；</li>
+<li><strong>状态（State）：</strong> 当使用 REST 的时候，我们更关注资源的状态而不是对资源采取的行为；</li>
+<li><strong>转义（Transfer）：</strong> REST 涉及到转移资源数据，它以某种表述性形式从一个应用转移到另一个应用。</li>
+</ul>
+<p><strong>简单地说，REST 就是将资源的状态以适合客户端或服务端的形式从服务端转移到客户端（或者反过来）。</strong>在 REST 中，资源<strong>通过 URL 进行识别和定位</strong>，然后通过<strong>行为(即 HTTP 方法)</strong>来定义 REST 来完成怎样的功能。</p>
+<h4 id="4种行为对应的HTTP方法"><a href="#4种行为对应的HTTP方法" class="headerlink" title="4种行为对应的HTTP方法:"></a>4种行为对应的HTTP方法:</h4><p>在平时的 Web 开发中，method 常用的值是 GET 和 POST，但是实际上，HTTP 方法还有 PATCH、DELETE、PUT 等其他值，这些方法又通常会匹配为如下的 CRUD 动作:</p>
+<table>
+<thead>
+<tr>
+<th align="center">CRUD 动作</th>
+<th align="center">HTTP 方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Create</td>
+<td align="center">POST</td>
+</tr>
+<tr>
+<td align="center">Read</td>
+<td align="center">GET</td>
+</tr>
+<tr>
+<td align="center">Update</td>
+<td align="center">PUT 或 PATCH</td>
+</tr>
+<tr>
+<td align="center">Delete</td>
+<td align="center">DELETE</td>
+</tr>
+</tbody></table>
+<h3 id="为什么用RESTful-API？"><a href="#为什么用RESTful-API？" class="headerlink" title="为什么用RESTful API？"></a>为什么用RESTful API？</h3><p>在当今的互联网应用的前端展示媒介很丰富。有手机、有平板电脑还有PC以及其他的展示媒介。那么这些前端接收到的用户请求统一由一个后台来处理并返回给不同的前端肯定是最科学和最经济的方式，RESTful API就是一套协议来规范多种形式的前端和同一个后台的交互方式。</p>
+<h3 id="传统API与RESTful-API"><a href="#传统API与RESTful-API" class="headerlink" title="传统API与RESTful API"></a>传统API与RESTful API</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>传统风格</th>
+<th></th>
+<th>RESTful风格</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>url</td>
+<td>method</td>
+<td>url</td>
+<td>method</td>
+</tr>
+<tr>
+<td>增加</td>
+<td>/addEmployee</td>
+<td>POST</td>
+<td>/employee</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>删除</td>
+<td>/deleteEmployee?id=123</td>
+<td>GET</td>
+<td>/employee/123</td>
+<td>DELETE</td>
+</tr>
+<tr>
+<td>修改</td>
+<td>/updateEmployee?id=123&amp;name=zhang</td>
+<td>POST</td>
+<td>/employee/123/zhang</td>
+<td>PUT</td>
+</tr>
+<tr>
+<td>查询</td>
+<td>/listEmployee</td>
+<td>GET</td>
+<td>/employee</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>获取指定</td>
+<td>/getEmployee?id=123</td>
+<td>GET</td>
+<td>/employee/123</td>
+<td>GET</td>
+</tr>
+</tbody></table>
+<p>通过对比，RESTful的优势更加明显了，传统风格在编写时定义是任意的，如果开发人员在编写接口时命名意义不明确，其他调用接口的人员只能通过开发文档或者代码才能理解接口的调用和功能了。</p>
+<p>总结：简洁、统一、明确的编写方式就是RESTful API的特点。遵守RESTful风格API开发对开发效率的提高是极大的。</p>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-09-24T05:10:57.302Z" itemprop="dateUpdated">2019-09-24 13:10:57</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/09/24/RESTful风格的API/" target="_blank" rel="external">https://gaooye.github.io/2019/09/24/RESTful风格的API/</a>
+        
+    </div>
+    <footer>
+        <a href="https://gaooye.github.io">
+            <img src="/img/girl.jpg" alt="gaooye`s blog">
+            gaooye`s blog
+        </a>
+    </footer>
+</blockquote>
+
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RESTful/">RESTful</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/接口/">接口</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gaooye.github.io/2019/09/24/RESTful风格的API/&title=《RESTful API》 — 勇敢的立 F L A G ！&pic=https://gaooye.github.io/img/girl.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gaooye.github.io/2019/09/24/RESTful风格的API/&title=《RESTful API》 — 勇敢的立 F L A G ！&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gaooye.github.io/2019/09/24/RESTful风格的API/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《RESTful API》 — 勇敢的立 F L A G ！&url=https://gaooye.github.io/2019/09/24/RESTful风格的API/&via=https://gaooye.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gaooye.github.io/2019/09/24/RESTful风格的API/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/09/22/SpringBoot最核心注解/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Spring Boot最核心注解</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是RESTful？"><span class="post-toc-text">什么是RESTful？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4种行为对应的HTTP方法"><span class="post-toc-text">4种行为对应的HTTP方法:</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么用RESTful-API？"><span class="post-toc-text">为什么用RESTful API？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#传统API与RESTful-API"><span class="post-toc-text">传统API与RESTful API</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                gaooye`s blog &copy; 2019
+            </span>
+        		
+           	
+           	<span>
+           		<a href="http://www.miitbeian.gov.cn/" target="_blank">搞嘢gaooye</a>
+           	</span>
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">访客小伙伴：
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">访问量：
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gaooye.github.io/2019/09/24/RESTful风格的API/&title=《RESTful API》 — 勇敢的立 F L A G ！&pic=https://gaooye.github.io/img/girl.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gaooye.github.io/2019/09/24/RESTful风格的API/&title=《RESTful API》 — 勇敢的立 F L A G ！&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gaooye.github.io/2019/09/24/RESTful风格的API/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《RESTful API》 — 勇敢的立 F L A G ！&url=https://gaooye.github.io/2019/09/24/RESTful风格的API/&via=https://gaooye.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gaooye.github.io/2019/09/24/RESTful风格的API/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3azY6DMAxF4b7/SzObWYzUIT3Xhko4h1VVUZKPhRv/vF74Ov5cZ9+8f7++5+zz+/2XXTJkyHgs41heZHPrhclz0nX/WVGGDBkbMMjyPO6dbWIdvvm6MmTIkJE+jmyLB2sZMmTI6DPWqWb6KxkyZMjgDB4WO0dG8gpuz8VlyJDxQEYtNf3O51v6GzJkyHgU4wgvXlAjZbV+8+D3VzJkyBjN4AGulrh2GqXxfmTIkDGasS57kUEKknymKSspCL5IHU6GDBkjGHzJtD2ZJq61I6kMGTJ2YKSxi7cV0620/jFkyJAxmsEHttJxiqBY1t6VDBkydmDwo15a9CdFt85OZMiQMZvBy2Q8sNZamy22DBkyNmakBz4SxDvjGqfPlCFDxjaM/sgFKb3xUho/ksqQIWM2I00sebisgXkrQoYMGTsz0mbkVclt5/XJkCFjNiNtOnaaB7Uno2AtQ4aMbRhkQ3x0LJ3j6ox0yJAhYzaDJ7Gdsj7PNHkyLEOGjD0ZnW/WyWctt453JUOGjC0ZncNienzkyfCHc64MGTJGM2pjXmn6yhul/LcyZMiYzTjCq3PU46E2psqQIWM0oxMoO6W0dKii85pkyJAxg8HHIGoBl7cc0hRahgwZuzE64w5p+5MPecSprAwZMmTgFJRvKG0VfMjIZciQIQOX+ElCWxuzuDjgypAh41EMnnBetjB4cbfk4jJkyHggo3aMS4totbNceqcMGTLGMX4AQ4iodvFee/YAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = 'eiei,我不见了！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = 'eiei,我又回来了！';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+</body>
+</html>
