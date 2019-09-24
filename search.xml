@@ -3,6 +3,45 @@
   
     
     <entry>
+      <title><![CDATA[四个方面考虑sql优化]]></title>
+      <url>/2019/09/24/%E5%9B%9B%E4%B8%AA%E6%96%B9%E9%9D%A2%E8%80%83%E8%99%91sql%E4%BC%98%E5%8C%96/</url>
+      <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="关于SQL优化可以从以下四个方面去考虑："><a href="#关于SQL优化可以从以下四个方面去考虑：" class="headerlink" title="关于SQL优化可以从以下四个方面去考虑："></a>关于SQL优化可以从以下四个方面去考虑：</h3><h4 id="合理创建索引："><a href="#合理创建索引：" class="headerlink" title="合理创建索引："></a>合理创建索引：</h4><p>1、对查询进行优化，要考虑尽量避免走全表扫描，考虑在<strong>where或在order by涉及字段上建立索引</strong>。</p>
+<h4 id="避免索引失效："><a href="#避免索引失效：" class="headerlink" title="避免索引失效："></a>避免索引失效：</h4><p>1、<strong>in</strong>和<strong>not in</strong>要慎用，否则会导致全表扫描。如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select id from t where in(1,2,3)</span><br></pre></td></tr></table></figure>
+
+<p>可以使用<strong>where (not)exists</strong>代替in和not in,如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">num</span> <span class="keyword">from</span> a <span class="keyword">where</span> <span class="keyword">exists</span>(<span class="keyword">select</span> <span class="number">1</span> <span class="keyword">from</span> b <span class="keyword">where</span> <span class="keyword">num</span>=a.num)</span><br></pre></td></tr></table></figure>
+
+<p>2、应尽量避免在 where 子句中对字段进行 <strong>null</strong> <strong>值判断</strong>，否则将导致引擎放弃使用索引而进行全表扫描，如：    </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> t <span class="keyword">where</span> <span class="keyword">num</span> <span class="keyword">is</span> <span class="literal">null</span></span><br></pre></td></tr></table></figure>
+
+<p>可以在num上设置默认值0，确保表中num列没有null值，然后这样查询：    </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> t <span class="keyword">where</span> <span class="keyword">num</span>=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>3、避免在where子句中<strong>！=</strong>和<strong>&lt;&gt;</strong>操作符，否则导致索引失效而走全表扫描。</p>
+<p>4、应尽量避免在 where 子句中使用 <strong>or</strong> 来连接条件，如果一个字段有索引，一个字段没有索引，将导致引擎放弃使用索引而进行全表扫描。</p>
+<h4 id="合理创建表字段："><a href="#合理创建表字段：" class="headerlink" title="合理创建表字段："></a>合理创建表字段：</h4><p>1、索引不是越多越好，索引固然可以提高平select效率，但是可能会降低insert、update效率，因为要重新建立索引。</p>
+<p>2、最好不要给数据库留NULL，尽可能的使用 NOT NULL填充数据库，但备注、描述、评论之类的可以设置为 NULL，其他的，最好不要使用NULL。注意是尽量不要null，请根据实际业务选择。</p>
+<h4 id="其他："><a href="#其他：" class="headerlink" title="其他："></a>其他：</h4><p>1、任何时候都不要使用<strong>select * from t</strong>，用具体的字段名代替”*”，不要返回无用字段。</p>
+<p>2、避免向前端返回大量数据，可以进行分页或者其他限制。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> SQL </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> SQL </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[RESTful API]]></title>
       <url>/2019/09/24/RESTful%E9%A3%8E%E6%A0%BC%E7%9A%84API/</url>
       <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="什么是RESTful？"><a href="#什么是RESTful？" class="headerlink" title="什么是RESTful？"></a>什么是RESTful？</h3><p>REST 即<strong>REpresentational State Transfer</strong> 表现性状态转移。<br>是一种软件架构风格、设计风格，而不是标准，只是提供了一组设计原则和约束条件。它主要用于客户端和服务器交互类的软件。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存等机制。</p>

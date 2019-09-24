@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     
     
-    <title>RESTful API | 勇敢的立 F L A G ！</title>
+    <title>四个方面考虑sql优化 | 勇敢的立 F L A G ！</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="RESTful,接口">
+    <meta name="keywords" content="SQL">
     <link rel="shortcut icon" href="/img/feather_pen_64px_1231006_easyicon.net.ico">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="/css/style.css?v=1.4.4">
@@ -165,7 +165,7 @@
           <i class="icon icon-lg icon-navicon"></i>
         </a>
         <div class="flex-col header-title ellipsis">
-            <span>RESTful API</span>
+            <span>四个方面考虑sql优化</span>
             
         </div>
         
@@ -178,15 +178,15 @@
 <header class="content-header post-header">
     <img src="/img/微信图片_20190910190120.jpg" class="header-bg">
     <div class="container fade-scale">
-        <h1 class="title">RESTful API</h1>
+        <h1 class="title">四个方面考虑sql优化</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-09-24T04:08:31.000Z" itemprop="datePublished" class="page-time">
+                <time datetime="2019-09-24T11:07:31.000Z" itemprop="datePublished" class="page-time">
   2019-09-24
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/接口/">接口</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/接口/RESTful/">RESTful</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/SQL/">SQL</a></li></ul>
 
             
         </h5>
@@ -211,15 +211,15 @@
 
 
 <div class="container body-wrap">
-    <article id="post-2019/09/24/RESTful风格的API"
+    <article id="post-2019/09/24/四个方面考虑sql优化"
   class="post-article article-type-post" itemprop="blogPost">
     <div class="post-card">
-        <h1 class="post-card-title">RESTful API</h1>
+        <h1 class="post-card-title">四个方面考虑sql优化</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-09-24 12:08:31" datetime="2019-09-24T04:08:31.000Z"  itemprop="datePublished">2019-09-24</time>
+            <time class="post-time" title="2019-09-24 19:07:31" datetime="2019-09-24T11:07:31.000Z"  itemprop="datePublished">2019-09-24</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/接口/">接口</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/接口/RESTful/">RESTful</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/SQL/">SQL</a></li></ul>
 
 
 
@@ -232,94 +232,25 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             
-            <h3 id="什么是RESTful？"><a href="#什么是RESTful？" class="headerlink" title="什么是RESTful？"></a>什么是RESTful？</h3><p>REST 即<strong>REpresentational State Transfer</strong> 表现性状态转移。<br>是一种软件架构风格、设计风格，而不是标准，只是提供了一组设计原则和约束条件。它主要用于客户端和服务器交互类的软件。基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存等机制。</p>
-<ul>
-<li><strong>表述性（REpresentational）：</strong> REST 资源实际上可以用各种形式来进行表述，包括 XML、JSON 甚至 HTML——最适合资源使用者的任意形式；</li>
-<li><strong>状态（State）：</strong> 当使用 REST 的时候，我们更关注资源的状态而不是对资源采取的行为；</li>
-<li><strong>转义（Transfer）：</strong> REST 涉及到转移资源数据，它以某种表述性形式从一个应用转移到另一个应用。</li>
-</ul>
-<p><strong>简单地说，REST 就是将资源的状态以适合客户端或服务端的形式从服务端转移到客户端（或者反过来）。</strong>在 REST 中，资源<strong>通过 URL 进行识别和定位</strong>，然后通过<strong>行为(即 HTTP 方法)</strong>来定义 REST 来完成怎样的功能。</p>
-<h4 id="4种行为对应的HTTP方法"><a href="#4种行为对应的HTTP方法" class="headerlink" title="4种行为对应的HTTP方法:"></a>4种行为对应的HTTP方法:</h4><p>在平时的 Web 开发中，method 常用的值是 GET 和 POST，但是实际上，HTTP 方法还有 PATCH、DELETE、PUT 等其他值，这些方法又通常会匹配为如下的 CRUD 动作:</p>
-<table>
-<thead>
-<tr>
-<th align="center">CRUD 动作</th>
-<th align="center">HTTP 方法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Create</td>
-<td align="center">POST</td>
-</tr>
-<tr>
-<td align="center">Read</td>
-<td align="center">GET</td>
-</tr>
-<tr>
-<td align="center">Update</td>
-<td align="center">PUT 或 PATCH</td>
-</tr>
-<tr>
-<td align="center">Delete</td>
-<td align="center">DELETE</td>
-</tr>
-</tbody></table>
-<h3 id="为什么用RESTful-API？"><a href="#为什么用RESTful-API？" class="headerlink" title="为什么用RESTful API？"></a>为什么用RESTful API？</h3><p>在当今的互联网应用的前端展示媒介很丰富。有手机、有平板电脑还有PC以及其他的展示媒介。那么这些前端接收到的用户请求统一由一个后台来处理并返回给不同的前端肯定是最科学和最经济的方式，RESTful API就是一套协议来规范多种形式的前端和同一个后台的交互方式。</p>
-<h3 id="传统API与RESTful-API"><a href="#传统API与RESTful-API" class="headerlink" title="传统API与RESTful API"></a>传统API与RESTful API</h3><table>
-<thead>
-<tr>
-<th></th>
-<th>传统风格</th>
-<th></th>
-<th>RESTful风格</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td>url</td>
-<td>method</td>
-<td>url</td>
-<td>method</td>
-</tr>
-<tr>
-<td>增加</td>
-<td>/addEmployee</td>
-<td>POST</td>
-<td>/employee</td>
-<td>POST</td>
-</tr>
-<tr>
-<td>删除</td>
-<td>/deleteEmployee?id=123</td>
-<td>GET</td>
-<td>/employee/123</td>
-<td>DELETE</td>
-</tr>
-<tr>
-<td>修改</td>
-<td>/updateEmployee?id=123&amp;name=zhang</td>
-<td>POST</td>
-<td>/employee/123/zhang</td>
-<td>PUT</td>
-</tr>
-<tr>
-<td>查询</td>
-<td>/listEmployee</td>
-<td>GET</td>
-<td>/employee</td>
-<td>GET</td>
-</tr>
-<tr>
-<td>获取指定</td>
-<td>/getEmployee?id=123</td>
-<td>GET</td>
-<td>/employee/123</td>
-<td>GET</td>
-</tr>
-</tbody></table>
-<p>通过对比，RESTful的优势更加明显了，传统风格在编写时定义是任意的，如果开发人员在编写接口时命名意义不明确，其他调用接口的人员只能通过开发文档或者代码才能理解接口的调用和功能了。</p>
-<p>总结：简洁、统一、明确的编写方式就是RESTful API的特点。遵守RESTful风格API开发对开发效率的提高是极大的。</p>
+            <h3 id="关于SQL优化可以从以下四个方面去考虑："><a href="#关于SQL优化可以从以下四个方面去考虑：" class="headerlink" title="关于SQL优化可以从以下四个方面去考虑："></a>关于SQL优化可以从以下四个方面去考虑：</h3><h4 id="合理创建索引："><a href="#合理创建索引：" class="headerlink" title="合理创建索引："></a>合理创建索引：</h4><p>1、对查询进行优化，要考虑尽量避免走全表扫描，考虑在<strong>where或在order by涉及字段上建立索引</strong>。</p>
+<h4 id="避免索引失效："><a href="#避免索引失效：" class="headerlink" title="避免索引失效："></a>避免索引失效：</h4><p>1、<strong>in</strong>和<strong>not in</strong>要慎用，否则会导致全表扫描。如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select id from t where in(1,2,3)</span><br></pre></td></tr></table></figure>
+
+<p>可以使用<strong>where (not)exists</strong>代替in和not in,如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">num</span> <span class="keyword">from</span> a <span class="keyword">where</span> <span class="keyword">exists</span>(<span class="keyword">select</span> <span class="number">1</span> <span class="keyword">from</span> b <span class="keyword">where</span> <span class="keyword">num</span>=a.num)</span><br></pre></td></tr></table></figure>
+
+<p>2、应尽量避免在 where 子句中对字段进行 <strong>null</strong> <strong>值判断</strong>，否则将导致引擎放弃使用索引而进行全表扫描，如：    </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> t <span class="keyword">where</span> <span class="keyword">num</span> <span class="keyword">is</span> <span class="literal">null</span></span><br></pre></td></tr></table></figure>
+
+<p>可以在num上设置默认值0，确保表中num列没有null值，然后这样查询：    </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">id</span> <span class="keyword">from</span> t <span class="keyword">where</span> <span class="keyword">num</span>=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>3、避免在where子句中<strong>！=</strong>和<strong>&lt;&gt;</strong>操作符，否则导致索引失效而走全表扫描。</p>
+<p>4、应尽量避免在 where 子句中使用 <strong>or</strong> 来连接条件，如果一个字段有索引，一个字段没有索引，将导致引擎放弃使用索引而进行全表扫描。</p>
+<h4 id="合理创建表字段："><a href="#合理创建表字段：" class="headerlink" title="合理创建表字段："></a>合理创建表字段：</h4><p>1、索引不是越多越好，索引固然可以提高平select效率，但是可能会降低insert、update效率，因为要重新建立索引。</p>
+<p>2、最好不要给数据库留NULL，尽可能的使用 NOT NULL填充数据库，但备注、描述、评论之类的可以设置为 NULL，其他的，最好不要使用NULL。注意是尽量不要null，请根据实际业务选择。</p>
+<h4 id="其他："><a href="#其他：" class="headerlink" title="其他："></a>其他：</h4><p>1、任何时候都不要使用<strong>select * from t</strong>，用具体的字段名代替”*”，不要返回无用字段。</p>
+<p>2、避免向前端返回大量数据，可以进行分页或者其他限制。</p>
 
         </div>
         
@@ -327,12 +258,12 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-09-24T05:10:57.302Z" itemprop="dateUpdated">2019-09-24 13:10:57</time>
+    Last updated: <time datetime="2019-09-24T13:44:29.056Z" itemprop="dateUpdated">2019-09-24 21:44:29</time>
 </span><br>
 
 
         
-        转载注明出处，原文地址：<a href="/2019/09/24/RESTful风格的API/" target="_blank" rel="external">https://gaooye.github.io/2019/09/24/RESTful风格的API/</a>
+        转载注明出处，原文地址：<a href="/2019/09/24/四个方面考虑sql优化/" target="_blank" rel="external">https://gaooye.github.io/2019/09/24/四个方面考虑sql优化/</a>
         
     </div>
     <footer>
@@ -346,7 +277,7 @@
         
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RESTful/">RESTful</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/接口/">接口</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
 
             <div class="page-share-wrap">
     
@@ -355,7 +286,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gaooye.github.io/2019/09/24/RESTful风格的API/&title=《RESTful API》 — 勇敢的立 F L A G ！&pic=https://gaooye.github.io/img/girl.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gaooye.github.io/2019/09/24/四个方面考虑sql优化/&title=《四个方面考虑sql优化》 — 勇敢的立 F L A G ！&pic=https://gaooye.github.io/img/girl.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -367,25 +298,25 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gaooye.github.io/2019/09/24/RESTful风格的API/&title=《RESTful API》 — 勇敢的立 F L A G ！&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gaooye.github.io/2019/09/24/四个方面考虑sql优化/&title=《四个方面考虑sql优化》 — 勇敢的立 F L A G ！&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gaooye.github.io/2019/09/24/RESTful风格的API/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gaooye.github.io/2019/09/24/四个方面考虑sql优化/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《RESTful API》 — 勇敢的立 F L A G ！&url=https://gaooye.github.io/2019/09/24/RESTful风格的API/&via=https://gaooye.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《四个方面考虑sql优化》 — 勇敢的立 F L A G ！&url=https://gaooye.github.io/2019/09/24/四个方面考虑sql优化/&via=https://gaooye.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gaooye.github.io/2019/09/24/RESTful风格的API/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gaooye.github.io/2019/09/24/四个方面考虑sql优化/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -408,21 +339,14 @@
         
     </div>
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="prev">
-      <a href="/2019/09/24/四个方面考虑sql优化/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">四个方面考虑sql优化</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="next">
-      <a href="/2019/09/22/SpringBoot最核心注解/" id="post-next" class="post-nav-link">
+      <a href="/2019/09/24/RESTful风格的API/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Spring Boot最核心注解</h4>
+        <h4 class="title">RESTful API</h4>
       </a>
     </div>
   
@@ -434,7 +358,7 @@
         <aside class="post-widget">
             <nav class="post-toc-wrap" id="post-toc">
                 <strong>目录</strong>
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是RESTful？"><span class="post-toc-text">什么是RESTful？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4种行为对应的HTTP方法"><span class="post-toc-text">4种行为对应的HTTP方法:</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么用RESTful-API？"><span class="post-toc-text">为什么用RESTful API？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#传统API与RESTful-API"><span class="post-toc-text">传统API与RESTful API</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关于SQL优化可以从以下四个方面去考虑："><span class="post-toc-text">关于SQL优化可以从以下四个方面去考虑：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#合理创建索引："><span class="post-toc-text">合理创建索引：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#避免索引失效："><span class="post-toc-text">避免索引失效：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#合理创建表字段："><span class="post-toc-text">合理创建表字段：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#其他："><span class="post-toc-text">其他：</span></a></li></ol></li></ol>
             </nav>
             <div class="toc-bar"><div>
         </aside>
@@ -504,7 +428,7 @@
     <ul class="reset share-icons">
       
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gaooye.github.io/2019/09/24/RESTful风格的API/&title=《RESTful API》 — 勇敢的立 F L A G ！&pic=https://gaooye.github.io/img/girl.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gaooye.github.io/2019/09/24/四个方面考虑sql优化/&title=《四个方面考虑sql优化》 — 勇敢的立 F L A G ！&pic=https://gaooye.github.io/img/girl.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -516,25 +440,25 @@
       </li>
       
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gaooye.github.io/2019/09/24/RESTful风格的API/&title=《RESTful API》 — 勇敢的立 F L A G ！&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gaooye.github.io/2019/09/24/四个方面考虑sql优化/&title=《四个方面考虑sql优化》 — 勇敢的立 F L A G ！&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gaooye.github.io/2019/09/24/RESTful风格的API/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gaooye.github.io/2019/09/24/四个方面考虑sql优化/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《RESTful API》 — 勇敢的立 F L A G ！&url=https://gaooye.github.io/2019/09/24/RESTful风格的API/&via=https://gaooye.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《四个方面考虑sql优化》 — 勇敢的立 F L A G ！&url=https://gaooye.github.io/2019/09/24/四个方面考虑sql优化/&via=https://gaooye.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gaooye.github.io/2019/09/24/RESTful风格的API/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gaooye.github.io/2019/09/24/四个方面考虑sql优化/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -546,7 +470,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3azY6DMAxF4b7/SzObWYzUIT3Xhko4h1VVUZKPhRv/vF74Ov5cZ9+8f7++5+zz+/2XXTJkyHgs41heZHPrhclz0nX/WVGGDBkbMMjyPO6dbWIdvvm6MmTIkJE+jmyLB2sZMmTI6DPWqWb6KxkyZMjgDB4WO0dG8gpuz8VlyJDxQEYtNf3O51v6GzJkyHgU4wgvXlAjZbV+8+D3VzJkyBjN4AGulrh2GqXxfmTIkDGasS57kUEKknymKSspCL5IHU6GDBkjGHzJtD2ZJq61I6kMGTJ2YKSxi7cV0620/jFkyJAxmsEHttJxiqBY1t6VDBkydmDwo15a9CdFt85OZMiQMZvBy2Q8sNZamy22DBkyNmakBz4SxDvjGqfPlCFDxjaM/sgFKb3xUho/ksqQIWM2I00sebisgXkrQoYMGTsz0mbkVclt5/XJkCFjNiNtOnaaB7Uno2AtQ4aMbRhkQ3x0LJ3j6ox0yJAhYzaDJ7Gdsj7PNHkyLEOGjD0ZnW/WyWctt453JUOGjC0ZncNienzkyfCHc64MGTJGM2pjXmn6yhul/LcyZMiYzTjCq3PU46E2psqQIWM0oxMoO6W0dKii85pkyJAxg8HHIGoBl7cc0hRahgwZuzE64w5p+5MPecSprAwZMmTgFJRvKG0VfMjIZciQIQOX+ElCWxuzuDjgypAh41EMnnBetjB4cbfk4jJkyHggo3aMS4totbNceqcMGTLGMX4AQ4iodvFee/YAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3awY4aQQwEUP7/pzfXSMmQKrsbEenNCcGy9JvD2Cr79Yqvn9+uzaf59fTd140LDw8Pb3H05Gf+/O7T/3z/fnLcnP14C/Dw8PCu8fKjJNT2u/mn9W3Fw8PD+xrerOXNqe/ZeHh4eP8X7/07N5rpjxYGPDw8vJiXhBH7Jvj9TUn+5mLWgoeHhxfz8inS97y+Mt/Dw8PDW0/Vk4d1Wyo2UUV9Wjw8PLwLvM0If7Y41YbCs5gYDw8P7zO85EE/WyAYxq/rgRkeHh7ePV4y4mqb3U0I25aEiI2Hh4d3iNeOvm6sVeXFIxmYPVY8PDw8vAu8WQNdt7bxukDeuNd7W3h4eHgL3inwvsl+39a3v/KIx8PDw1vz8sdxWxjaBj1fVijiZjw8PLxrvFkI24YRbVCbt9GP/w0PDw/vAm/22J0Nt16LazMew8PDw7vBa6PbdiQ2CzWS2x3Fx3h4eHgXeO2iVRsuzKLbWbNeTOTw8PDwRrz8oLO1gFmwm8Qf0c3Cw8PDu8DLg9pZGHFqqJa09Y9FAg8PD+8arw1282WpWVGZrXm99hUMDw8P7y2vbXyTd/LBWLuacGCnDA8PD+8oLx9EJc33ZkFhNu7Cw8PD+wwvKQmbtYBZKzxbMlgdEQ8PD6/ktSOrPKpo2+VZCflHNIyHh4d3jbdZeGoPunnc1+UBDw8P74O8WUlol7fao9dxBh4eHt41XrsONSsJs9WENhbBw8PDu8f7Ka/ZCGp2+2at/F/me3h4eHhHebMRVzvW+uTrvH3Hw8PD2/DaRau2Xd6EGgcKAx4eHt41XjsYa8das9a5DSDw8PDwvpnXMvKY4/CSFh4eHt4X8PIicWolK2/Ts5EfHh4e3hnebIiVN8TJsc7GwXh4eHj3eMNdrTiASB7u7WLW2VUtPDw8vJj3CzPf5ClokYwMAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 

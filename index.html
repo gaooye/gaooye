@@ -208,6 +208,67 @@
         <ul class="post-list">
         
             <li class="post-list-item fade">
+                <article id="post-2019/09/24/四个方面考虑sql优化"
+  class="article-card article-type-post" itemprop="blogPost">
+  
+    
+    
+    
+        
+
+
+  
+    <h3 class="post-title re-title" itemprop="name">
+      <a class="post-title-link" href="/2019/09/24/四个方面考虑sql优化/">四个方面考虑sql优化</a>
+    </h3>
+  
+
+
+
+    
+    <div class="post-meta">
+        <time class="post-time" title="2019-09-24 19:07:31" datetime="2019-09-24T11:07:31.000Z"  itemprop="datePublished">2019-09-24</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/SQL/">SQL</a></li></ul>
+
+
+
+        
+
+        
+
+
+        
+        
+    </div>
+    
+    <div class="post-content" id="post-content" itemprop="postContent">
+    
+    
+        关于SQL优化可以从以下四个方面去考虑：合理创建索引：1、对查询进行优化，要考虑尽量避免走全表扫描，考虑在where或在order by涉及字段上建立索引。
+避免索引失效：1、in和not in要慎用，否则会导致全表扫描。如下
+1select id from t where in(1,2,3)
+
+可以使用where (not)exists代替in和not in,如下
+1select num from a where exists(select 1 from b where num=a.nu...
+    
+    <a href="/2019/09/24/四个方面考虑sql优化/" class="post-more waves-effect waves-button">
+        more
+    </a>
+    </div>
+</article>
+
+<div class="post-footer">
+    
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+
+</div>
+
+
+            </li>
+        
+            <li class="post-list-item fade">
                 <article id="post-2019/09/24/RESTful风格的API"
   class="article-card article-type-post" itemprop="blogPost">
   
@@ -374,88 +435,6 @@
 <div class="post-footer">
     
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/储存过程/">储存过程</a></li></ul>
-
-</div>
-
-
-            </li>
-        
-            <li class="post-list-item fade">
-                <article id="post-2019/09/15/Eclipse和IDEA快捷键对比"
-  class="article-card article-type-post" itemprop="blogPost">
-  
-    
-    
-    
-        
-
-
-  
-    <h3 class="post-title re-title" itemprop="name">
-      <a class="post-title-link" href="/2019/09/15/Eclipse和IDEA快捷键对比/">Eclipse和IDEA快捷键对比</a>
-    </h3>
-  
-
-
-
-    
-    <div class="post-meta">
-        <time class="post-time" title="2019-09-15 19:11:38" datetime="2019-09-15T11:11:38.000Z"  itemprop="datePublished">2019-09-15</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/IDE/">IDE</a></li></ul>
-
-
-
-        
-
-        
-
-
-        
-        
-    </div>
-    
-    <div class="post-content" id="post-content" itemprop="postContent">
-    
-    
-        之前的学习中一直使用的是Eclipse，可以说对Eclipse的快捷键已经很透了。最近准备适应IDEA的使用，也是应开发中可能出现更换IDE的需求，提前做好准备。一经上手，发现区别大了去了。不过IDEA真的是好用，不愧神器。
-记录一些常用的快捷键，方便查阅：
-搜索
-
-
-功能
-Eclipse快捷键
-IDEA快捷键
-
-
-
-搜索文本
-Ctrl + F
-Ctrl + F
-
-
-搜索方法、变量
-Ctrl + O
-Ctrl + F12
-
-
-搜索类
-Ctrl + Shift + T
-Ctrl + N
-
-
-...
-    
-    <a href="/2019/09/15/Eclipse和IDEA快捷键对比/" class="post-more waves-effect waves-button">
-        more
-    </a>
-    </div>
-</article>
-
-<div class="post-footer">
-    
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDE/">IDE</a></li></ul>
 
 </div>
 
