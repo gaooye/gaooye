@@ -246,8 +246,8 @@
 <p>对于一个刚起步的创业公司项目肯定是追求越快完成功能越好，并且用户量也不大。</p>
 <p>这时候所有的业务逻辑都是在一个项目中就可以满足。</p>
 <h2 id="垂直拆分-多应用"><a href="#垂直拆分-多应用" class="headerlink" title="垂直拆分-多应用"></a>垂直拆分-多应用</h2><figure class="image-box">
-                <a rel=基于dubbo的分布式架构 href="d68400c1694aa4a5c54d3e6c76779c97.webp" title="img" data-fancybox="images"><img src="d68400c1694aa4a5c54d3e6c76779c97.webp" alt="img" title class></a>
-                <p>img</p>
+                <a rel=基于dubbo的分布式架构 href="d68400c1694aa4a5c54d3e6c76779c97.webp" title="单系统" data-fancybox="images"><img src="d68400c1694aa4a5c54d3e6c76779c97.webp" alt="单系统" title class></a>
+                <p>单系统</p>
             </figure>
 
 <p>当业务量和用户量发展到一定地步的时候，这时一般会将应用同时部署到几台服务器上，在用户访问的时候使用<code>Nginx</code>进行反向代理和简单的负载均衡。</p>
@@ -263,8 +263,8 @@
 <p>所以需要将整个项目拆分成若干个独立的应用，可以进行独立的开发上线实现快速迭代。</p>
 </blockquote>
 <figure class="image-box">
-                <a rel=基于dubbo的分布式架构 href="77de59e261e322bfadb2a49fcd88266c.webp" title="img" data-fancybox="images"><img src="77de59e261e322bfadb2a49fcd88266c.webp" alt="img" title class></a>
-                <p>img</p>
+                <a rel=基于dubbo的分布式架构 href="77de59e261e322bfadb2a49fcd88266c.webp" title="垂直拆分-多应用" data-fancybox="images"><img src="77de59e261e322bfadb2a49fcd88266c.webp" alt="垂直拆分-多应用" title class></a>
+                <p>垂直拆分-多应用</p>
             </figure>
 
 <blockquote>
@@ -301,8 +301,8 @@
 <p>到时候登陆的话使用root，密码也是root。<br>使用guest，密码也是guest。</p>
 <p>登陆界面如下图：</p>
 <figure class="image-box">
-                <a rel=基于dubbo的分布式架构 href="/4630c069e52a67559242f3bf62ebfdc9.webp" title="4630c069e52a67559242f3bf62ebfdc9" data-fancybox="images"><img src="/4630c069e52a67559242f3bf62ebfdc9.webp" alt="4630c069e52a67559242f3bf62ebfdc9" title class></a>
-                <p>4630c069e52a67559242f3bf62ebfdc9</p>
+                <a rel=基于dubbo的分布式架构 href="基于dubbo的分布式架构\4630c069e52a67559242f3bf62ebfdc9.webp" title="" data-fancybox="images"><img src="基于dubbo的分布式架构\4630c069e52a67559242f3bf62ebfdc9.webp" alt title class></a>
+                <p></p>
             </figure>
 
 <p>其中我们可以看到有两个服务已经注册上去了，但是没有消费者。</p>
@@ -320,8 +320,8 @@
 
 <p>还有一点是在配置<code>SSM-BOOT</code>中的<code>spring-dubbo-cosumer.xml</code>配置文件的时候，路径要和我们初始化spring配置文件时的路径一致：</p>
 <figure class="image-box">
-                <a rel=基于dubbo的分布式架构 href="基于dubbo的分布式架构/ca650f7d05fe604ec9f6068f9b0659a2.webp" title="ca650f7d05fe604ec9f6068f9b0659a2" data-fancybox="images"><img src="基于dubbo的分布式架构/ca650f7d05fe604ec9f6068f9b0659a2.webp" alt="ca650f7d05fe604ec9f6068f9b0659a2" title class></a>
-                <p>ca650f7d05fe604ec9f6068f9b0659a2</p>
+                <a rel=基于dubbo的分布式架构 href="\基于dubbo的分布式架构\ca650f7d05fe604ec9f6068f9b0659a2.webp" title="" data-fancybox="images"><img src="\基于dubbo的分布式架构\ca650f7d05fe604ec9f6068f9b0659a2.webp" alt title class></a>
+                <p></p>
             </figure>
 
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Spring和mybatis的配置文件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath*:spring/*.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -330,25 +330,25 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Function:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> chenjiec</span></span><br><span class="line"><span class="comment"> *         Date: 2017/4/5 下午10:41</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.7</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="meta">@ContextConfiguration</span>(locations = &#123; <span class="string">"classpath*:/spring/*.xml"</span> &#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SalaryInfoApiImplTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> SalaryInfoApi salaryInfoApi ;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getSalaryInfo</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        SalaryInfoRsp salaryInfo = salaryInfoApi.getSalaryInfo(<span class="number">1</span>);</span><br><span class="line">        System.out.println(JSON.toJSONString(salaryInfo));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <a rel=基于dubbo的分布式架构 href="基于dubbo的分布式架构/fa556b3d3762ae0033488dc40758269a.webp" title="fa556b3d3762ae0033488dc40758269a" data-fancybox="images"><img src="基于dubbo的分布式架构/fa556b3d3762ae0033488dc40758269a.webp" alt="fa556b3d3762ae0033488dc40758269a" title class></a>
+                <a rel=基于dubbo的分布式架构 href="基于dubbo的分布式架构\fa556b3d3762ae0033488dc40758269a.webp" title="fa556b3d3762ae0033488dc40758269a" data-fancybox="images"><img src="基于dubbo的分布式架构\fa556b3d3762ae0033488dc40758269a.webp" alt="fa556b3d3762ae0033488dc40758269a" title class></a>
                 <p>fa556b3d3762ae0033488dc40758269a</p>
             </figure>
 
 <p>消费者</p>
 <figure class="image-box">
-                <a rel=基于dubbo的分布式架构 href="基于dubbo的分布式架构\5f366efdfb26ee5857fa8883738353f0.webp" title="5f366efdfb26ee5857fa8883738353f0" data-fancybox="images"><img src="基于dubbo的分布式架构\5f366efdfb26ee5857fa8883738353f0.webp" alt="5f366efdfb26ee5857fa8883738353f0" title class></a>
+                <a rel=基于dubbo的分布式架构 href="\基于dubbo的分布式架构\\5f366efdfb26ee5857fa8883738353f0.webp" title="5f366efdfb26ee5857fa8883738353f0" data-fancybox="images"><img src="\基于dubbo的分布式架构\\5f366efdfb26ee5857fa8883738353f0.webp" alt="5f366efdfb26ee5857fa8883738353f0" title class></a>
                 <p>5f366efdfb26ee5857fa8883738353f0</p>
             </figure>
 <p>提供者可以看到确实是调用成功了的。</p>
 <p>接下来将消费者项目也同时启动在来观察管理控制台有什么不一样：</p>
 <figure class="image-box">
-                <a rel=基于dubbo的分布式架构 href="基于dubbo的分布式架构\\6ff7140a5a040a555a04c2f950025c75.webp" title="6ff7140a5a040a555a04c2f950025c75" data-fancybox="images"><img src="基于dubbo的分布式架构\\6ff7140a5a040a555a04c2f950025c75.webp" alt="6ff7140a5a040a555a04c2f950025c75" title class></a>
+                <a rel=基于dubbo的分布式架构 href="C:\Users\83932\blog\source\_posts\2019\10\24\基于dubbo的分布式架构\6ff7140a5a040a555a04c2f950025c75.webp" title="6ff7140a5a040a555a04c2f950025c75" data-fancybox="images"><img src="C:\Users\83932\blog\source\_posts\2019\10\24\基于dubbo的分布式架构\6ff7140a5a040a555a04c2f950025c75.webp" alt="6ff7140a5a040a555a04c2f950025c75" title class></a>
                 <p>6ff7140a5a040a555a04c2f950025c75</p>
             </figure>
 
 <p>会看到多了一个消费者所提供的服务<code>com.crossoverjie.consumer.api.SalaryInfoApi</code>,同时<br><code>com.crossoverJie.api.UserInfoApi</code>服务已经正常，说明已经有消费者了。</p>
 <figure class="image-box">
-                <a rel=基于dubbo的分布式架构 href="基于dubbo的分布式架构\a7741411bde2532ab2174aa46cb086b2.jpg" title="" data-fancybox="images"><img src="基于dubbo的分布式架构\a7741411bde2532ab2174aa46cb086b2.jpg" alt title class></a>
+                <a rel=基于dubbo的分布式架构 href="\a7741411bde2532ab2174aa46cb086b2.jpg" title="" data-fancybox="images"><img src="\a7741411bde2532ab2174aa46cb086b2.jpg" alt title class></a>
                 <p></p>
             </figure>
 
@@ -374,7 +374,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-10-25T08:22:32.664Z" itemprop="dateUpdated">2019-10-25 16:22:32</time>
+    Last updated: <time datetime="2019-10-25T08:30:56.980Z" itemprop="dateUpdated">2019-10-25 16:30:56</time>
 </span><br>
 
 
