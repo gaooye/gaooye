@@ -12,14 +12,14 @@
 <p>我们拿一个电商系统来说：</p>
 </blockquote>
 <h2 id="单系统"><a href="#单系统" class="headerlink" title="单系统"></a>单系统</h2><figure class="image-box">
-                <img src="\074884756a0034ab546fec5f5a4174aa.webp" alt title class>
+                <img src="074884756a0034ab546fec5f5a4174aa.webp" alt title class>
                 <p></p>
             </figure>
 
 <p>对于一个刚起步的创业公司项目肯定是追求越快完成功能越好，并且用户量也不大。</p>
 <p>这时候所有的业务逻辑都是在一个项目中就可以满足。</p>
 <h2 id="垂直拆分-多应用"><a href="#垂直拆分-多应用" class="headerlink" title="垂直拆分-多应用"></a>垂直拆分-多应用</h2><figure class="image-box">
-                <img src="\d68400c1694aa4a5c54d3e6c76779c97.webp" alt title class>
+                <img src="d68400c1694aa4a5c54d3e6c76779c97.webp" alt title class>
                 <p></p>
             </figure>
 
@@ -36,7 +36,7 @@
 <p>所以需要将整个项目拆分成若干个独立的应用，可以进行独立的开发上线实现快速迭代。</p>
 </blockquote>
 <figure class="image-box">
-                <img src="\77de59e261e322bfadb2a49fcd88266c.webp" alt title class>
+                <img src="77de59e261e322bfadb2a49fcd88266c.webp" alt title class>
                 <p></p>
             </figure>
 
@@ -74,7 +74,7 @@
 <p>到时候登陆的话使用root，密码也是root。<br>使用guest，密码也是guest。</p>
 <p>登陆界面如下图：</p>
 <figure class="image-box">
-                <img src="\4630c069e52a67559242f3bf62ebfdc9.webp" alt title class>
+                <img src="4630c069e52a67559242f3bf62ebfdc9.webp" alt title class>
                 <p></p>
             </figure>
 
@@ -93,7 +93,7 @@
 
 <p>还有一点是在配置<code>SSM-BOOT</code>中的<code>spring-dubbo-cosumer.xml</code>配置文件的时候，路径要和我们初始化spring配置文件时的路径一致：</p>
 <figure class="image-box">
-                <img src="\ca650f7d05fe604ec9f6068f9b0659a2.webp" alt title class>
+                <img src="ca650f7d05fe604ec9f6068f9b0659a2.webp" alt title class>
                 <p></p>
             </figure>
 
@@ -103,19 +103,19 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Function:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> chenjiec</span></span><br><span class="line"><span class="comment"> *         Date: 2017/4/5 下午10:41</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.7</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="meta">@ContextConfiguration</span>(locations = &#123; <span class="string">"classpath*:/spring/*.xml"</span> &#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SalaryInfoApiImplTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> SalaryInfoApi salaryInfoApi ;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getSalaryInfo</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        SalaryInfoRsp salaryInfo = salaryInfoApi.getSalaryInfo(<span class="number">1</span>);</span><br><span class="line">        System.out.println(JSON.toJSONString(salaryInfo));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="image-box">
-                <img src="\fa556b3d3762ae0033488dc40758269a.webp" alt title class>
+                <img src="fa556b3d3762ae0033488dc40758269a.webp" alt title class>
                 <p></p>
             </figure>
 
 <p>消费者</p>
 <figure class="image-box">
-                <img src="\5f366efdfb26ee5857fa8883738353f0.webp" alt title class>
+                <img src="5f366efdfb26ee5857fa8883738353f0.webp" alt title class>
                 <p></p>
             </figure>
 <p>提供者可以看到确实是调用成功了的。</p>
 <p>接下来将消费者项目也同时启动在来观察管理控制台有什么不一样：</p>
 <figure class="image-box">
-                <img src="\6ff7140a5a040a555a04c2f950025c75.webp" alt title class>
+                <img src="6ff7140a5a040a555a04c2f950025c75.webp" alt title class>
                 <p></p>
             </figure>
 
