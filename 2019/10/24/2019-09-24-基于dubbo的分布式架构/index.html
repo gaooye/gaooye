@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    
+    
+    <title>基于dubbo的分布式架构 | 勇敢的立 F L A G ！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="分布式,dubbo">
+    <link rel="shortcut icon" href="/img/feather_pen_64px_1231006_easyicon.net.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.4">
+    
+    <script type="text/javascript">
+        // Data Center
+        var DC = {
+            reward:	false,
+            lv: JSON.parse('{"enable":false,"app_id":null,"app_key":null,"icon":true}'),
+            v: JSON.parse('{"enable":false,"appid":null,"appkey":null,"notify":true,"verify":true,"placeholder":"说点什么...","avatar":"msg"}'),
+            g: JSON.parse('{"enable":false,"lazy":true,"owner":"codefine","repo":"gitment","oauth":{"client_id":null,"client_secret":null},"perPage":10}'),
+            d: JSON.parse('{"app_id":null}')
+        };
+    </script>
+    <script type="text/javascript">
+        window.lazyScripts=[];
+    </script>
+    
+</head>
+
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      
+      <img src="/img/微信图片_20190910153545.jpg" class="brand-bg">
+      
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/girl.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">gaooye`s blog</h5>
+          <a href="mailto:839325540@qq.com" title="839325540@qq.com" class="mail">
+            
+              <span>8</span>
+            
+              <span>3</span>
+            
+              <span>9</span>
+            
+              <span>3</span>
+            
+              <span>2</span>
+            
+              <span>5</span>
+            
+              <span>5</span>
+            
+              <span>4</span>
+            
+              <span>0</span>
+            
+              <span>@</span>
+            
+              <span>q</span>
+            
+              <span>q</span>
+            
+              <span>.</span>
+            
+              <span>c</span>
+            
+              <span>o</span>
+            
+              <span>m</span>
+            
+          </a>
+        </hgroup>
+        
+        <ul class="menu-link">
+          
+              <li>
+                <a href="https://github.com/gaooye" target="_blank">
+                  <i class="icon icon-lg icon-github"></i>
+                </a>
+              </li>
+            
+              <li>
+                <a href="/img/reward-wechat.jpg " target="_blank">
+                  <i class="icon icon-lg icon-wechat"></i>
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://blog.csdn.net/weixin_42002656" target="_blank">
+                  <i class="icon icon-lg icon-copyright"></i>
+                </a>
+              </li>
+            
+        </ul>
+        
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home Page
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archive"></i>
+                Note
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-large"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-o"></i>
+                F L A G！
+              </a>
+            </li>
+        
+            <li class="">
+              <a href="/share"  >
+                <i class="icon icon-lg icon-smile-o"></i>
+                Love and Share
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row clearfix">
+        <a href="javascript:;" class="header-icon pull-left waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">
+            <span>基于dubbo的分布式架构</span>
+            
+        </div>
+        
+        <a href="javascript:;" id="site_search_btn" class="header-icon pull-right waves-effect waves-circle waves-light">
+            <i class="icon icon-lg icon-search"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+    <img src="/img/微信图片_20190910190120.jpg" class="header-bg">
+    <div class="container fade-scale">
+        <h1 class="title">基于dubbo的分布式架构</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-10-24T04:08:31.000Z" itemprop="datePublished" class="page-time">
+  2019-10-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分布式/">分布式</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分布式/dubbo/">dubbo</a></li></ul></li></ul>
+
+            
+        </h5>
+        
+    </div>
+    
+
+</header>
+
+<div id="site_search">
+    <div class="search-title clearfix">
+        <span class="pull-left">
+          <i class="icon icon-lg icon-search"></i>
+        </span>
+        <input type="text" id="local-search-input" name="q" results="0" placeholder="search my blog..." class="form-control pull-left"/>
+        <a href="javascript:;" class="close pull-right waves-effect waves-circle waves-light">
+          <i class="icon icon-lg icon-close"></i>
+        </a>
+    </div>
+    <div id="local-search-result"></div>
+</div>
+
+
+<div class="container body-wrap">
+    <article id="post-2019/10/24/2019-09-24-基于dubbo的分布式架构"
+  class="post-article article-type-post" itemprop="blogPost">
+    <div class="post-card">
+        <h1 class="post-card-title">基于dubbo的分布式架构</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-10-24 12:08:31" datetime="2019-10-24T04:08:31.000Z"  itemprop="datePublished">2019-10-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分布式/">分布式</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/分布式/dubbo/">dubbo</a></li></ul></li></ul>
+
+
+
+            
+
+            
+
+
+            
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            
+            <p>转自：<a href="https://juejin.im/post/58e674ec44d904006d35af5c" target="_blank" rel="noopener">https://juejin.im/post/58e674ec44d904006d35af5c</a></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>现在越来越多的互联网公司还是将自己公司的项目进行服务化，这确实是今后项目开发的一个趋势，就这个点再凭借之前的<code>SSM</code>项目来让第一次接触的同学能快速上手。</p>
+<h2 id="浅谈分布式架构"><a href="#浅谈分布式架构" class="headerlink" title="浅谈分布式架构"></a>浅谈分布式架构</h2><p><code>分布式架构</code>单看这个名字给人的感觉就是高逼格，但其实从历史的角度来分析一下就比较明了了。</p>
+<blockquote>
+<p>我们拿一个电商系统来说：</p>
+</blockquote>
+<h2 id="单系统"><a href="#单系统" class="headerlink" title="单系统"></a>单系统</h2><figure class="image-box">
+                <a rel=基于dubbo的分布式架构 href="基于dubbo的分布式架构\074884756a0034ab546fec5f5a4174aa.webp" title="img" data-fancybox="images"><img src="基于dubbo的分布式架构\074884756a0034ab546fec5f5a4174aa.webp" alt="img" title class></a>
+                <p>img</p>
+            </figure>
+
+<p>对于一个刚起步的创业公司项目肯定是追求越快完成功能越好，并且用户量也不大。</p>
+<p>这时候所有的业务逻辑都是在一个项目中就可以满足。</p>
+<h2 id="垂直拆分-多应用"><a href="#垂直拆分-多应用" class="headerlink" title="垂直拆分-多应用"></a>垂直拆分-多应用</h2><figure class="image-box">
+                <a rel=基于dubbo的分布式架构 href="基于dubbo的分布式架构/d68400c1694aa4a5c54d3e6c76779c97.webp" title="img" data-fancybox="images"><img src="基于dubbo的分布式架构/d68400c1694aa4a5c54d3e6c76779c97.webp" alt="img" title class></a>
+                <p>img</p>
+            </figure>
+
+<p>当业务量和用户量发展到一定地步的时候，这时一般会将应用同时部署到几台服务器上，在用户访问的时候使用<code>Nginx</code>进行反向代理和简单的负载均衡。</p>
+<h2 id="SOA服务化"><a href="#SOA服务化" class="headerlink" title="SOA服务化"></a>SOA服务化</h2><p>当整个系统以及发展的足够大的时候，比如一个电商系统中存在有：</p>
+<ul>
+<li>用户系统</li>
+<li>订单系统</li>
+<li>支付系统</li>
+<li>物流系统 </li>
+</ul>
+<p>等系统。<br>如果每次修改了其中一个系统就要重新发布上线的话那么耦合就太严重了。</p>
+<blockquote>
+<p>所以需要将整个项目拆分成若干个独立的应用，可以进行独立的开发上线实现快速迭代。</p>
+</blockquote>
+<figure class="image-box">
+                <a rel=基于dubbo的分布式架构 href="基于dubbo的分布式架构\77de59e261e322bfadb2a49fcd88266c.webp" title="img" data-fancybox="images"><img src="基于dubbo的分布式架构\77de59e261e322bfadb2a49fcd88266c.webp" alt="img" title class></a>
+                <p>img</p>
+            </figure>
+
+<blockquote>
+<p>如上图所示每个应用之间相互独立,每个应用可以消费其他应用暴露出来的服务，同时也对外提供服务。</p>
+</blockquote>
+<p>从架构的层面简单的理解了，接下来看看如何编码实现。</p>
+<h1 id="基于dubbo的实现"><a href="#基于dubbo的实现" class="headerlink" title="基于dubbo的实现"></a>基于dubbo的实现</h1><p><code>dubbo</code>应该算是国内使用最多的分布式服务框架，基于此来实现对新入门的同学应该很有帮助。</p>
+<blockquote>
+<p>其中有涉及到安装dubbo服务的注册中心zookeeper等相关知识点可以自行查看<a href="http://dubbo.io/" target="_blank" rel="noopener">官方文档</a>，这里就不单独讲了。</p>
+</blockquote>
+<h2 id="对外提供服务"><a href="#对外提供服务" class="headerlink" title="对外提供服务"></a>对外提供服务</h2><p>首先第一步需要在<code>SSM-API</code>模块中定义一个接口，这里就搞了一个用户查询的接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Function:用户API</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> chenjiec</span></span><br><span class="line"><span class="comment"> * Date: 2017/4/4 下午9:46</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.7</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserInfoApi</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取用户信息</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> userId</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserInfoRsp <span class="title">getUserInfo</span><span class="params">(<span class="keyword">int</span> userId)</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接着在<code>SSM-SERVICE</code>模块中进行实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.alibaba.dubbo.config.annotation.Service;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Function:</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> chenjiec</span></span><br><span class="line"><span class="comment"> * Date: 2017/4/4 下午9:51</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.7</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserInfoApiImpl</span> <span class="keyword">implements</span> <span class="title">UserInfoApi</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Logger logger = LoggerFactory.getLogger(UserInfoApiImpl.class);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> T_userService t_userService ;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取用户信息</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> userId</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserInfoRsp <span class="title">getUserInfo</span><span class="params">(<span class="keyword">int</span> userId)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        logger.info(<span class="string">"用户查询Id="</span>+userId);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//返回对象</span></span><br><span class="line">        UserInfoRsp userInfoRsp = <span class="keyword">new</span> UserInfoRsp() ;</span><br><span class="line">        T_user t_user = t_userService.selectByPrimaryKey(userId) ;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//构建</span></span><br><span class="line">        buildUserInfoRsp(userInfoRsp,t_user) ;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> userInfoRsp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 构建返回</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> userInfoRsp</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> t_user</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">buildUserInfoRsp</span><span class="params">(UserInfoRsp userInfoRsp, T_user t_user)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (t_user ==  <span class="keyword">null</span>)&#123;</span><br><span class="line">            t_user = <span class="keyword">new</span> T_user() ;</span><br><span class="line">        &#125;</span><br><span class="line">        CommonUtil.setLogValueModelToModel(t_user,userInfoRsp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这些都是通用的代码，但值得注意的一点是这里使用的<code>dubbo</code>框架所提供的<code>@service</code>注解。作用是声明需要暴露的服务接口。</p>
+<p>再之后就是几个dubbo相关的配置文件了。</p>
+<h3 id="spring-dubbo-config-xml"><a href="#spring-dubbo-config-xml" class="headerlink" title="spring-dubbo-config.xml"></a>spring-dubbo-config.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dubbo:application</span> <span class="attr">name</span>=<span class="string">"ssm-service"</span> <span class="attr">owner</span>=<span class="string">"crossoverJie"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">organization</span>=<span class="string">"ssm-crossoverJie"</span> <span class="attr">logger</span>=<span class="string">"slf4j"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:registry</span> <span class="attr">id</span>=<span class="string">"dubbo-registry"</span> <span class="attr">address</span>=<span class="string">"zookeeper://192.168.0.188:2181"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">file</span>=<span class="string">"/tmp/dubbo.cachr"</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!--监视器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:monitor</span> <span class="attr">protocol</span>=<span class="string">"registry"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:protocol</span> <span class="attr">name</span>=<span class="string">"dubbo"</span> <span class="attr">port</span>=<span class="string">"20880"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:provider</span> <span class="attr">timeout</span>=<span class="string">"15000"</span> <span class="attr">retries</span>=<span class="string">"0"</span> <span class="attr">delay</span>=<span class="string">"-1"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dubbo:consumer</span> <span class="attr">check</span>=<span class="string">"false"</span> <span class="attr">timeout</span>=<span class="string">"15000"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>其实就是配置我们服务注册的zk地址，以及服务名称、超时时间等配置。</p>
+<h3 id="spring-dubbo-provider-xml"><a href="#spring-dubbo-provider-xml" class="headerlink" title="spring-dubbo-provider.xml"></a>spring-dubbo-provider.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dubbo:annotation</span> <span class="attr">package</span>=<span class="string">"com.crossoverJie.api.impl"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个配置扫描注解包的位置，一般配置到接口实现包即可。</p>
+<h3 id="spring-dubbo-consumer-xml"><a href="#spring-dubbo-consumer-xml" class="headerlink" title="spring-dubbo-consumer.xml"></a>spring-dubbo-consumer.xml</h3><p>这个是消费者配置项，表明我们需要依赖的其他应用。<br>这里我们在<code>SSM-BOOT</code>项目中进行配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dubbo:reference</span> <span class="attr">id</span>=<span class="string">"userInfoApi"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">interface</span>=<span class="string">"com.crossoverJie.api.UserInfoApi"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>直接就是配置的刚才我们提供的那个用户查询的接口，这样当我们自己的内部项目需要使用到这个服务只需要依赖<code>SSM-BOOT</code>即可，不需要单独的再去配置<code>consumer</code>。这个我有在上一篇<a href="http://crossoverjie.top/2017/03/04/SSM10/#SSM-BOOT" target="_blank" rel="noopener">SSM(十) 项目重构-互联网项目的Maven结构</a>中也有提到。</p>
+<h2 id="安装管理控制台"><a href="#安装管理控制台" class="headerlink" title="安装管理控制台"></a>安装管理控制台</h2><p>还有一个需要做的就是安装管理控制台，这里可以看到我们有多少服务、调用情况是怎么样等作用。</p>
+<p>这里我们可以将dubbo的官方源码下载下来，对其中的<code>dubbo-admin</code>模块进行打包，将生成的<code>WAR包</code>放到<code>Tomcat</code>中运行起来即可。</p>
+<p>但是需要注意一点的是：<br>需要将其中的<code>dubbo.properties</code>的zk地址修改为自己的即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dubbo.registry.address=zookeeper://127.0.0.1:2181</span><br><span class="line">dubbo.admin.root.password=root</span><br><span class="line">dubbo.admin.guest.password=guest</span><br></pre></td></tr></table></figure>
+
+<p>到时候登陆的话使用root，密码也是root。<br>使用guest，密码也是guest。</p>
+<p>登陆界面如下图：</p>
+<figure class="image-box">
+                <a rel=基于dubbo的分布式架构 href="基于dubbo的分布式架构\4630c069e52a67559242f3bf62ebfdc9.webp" title="4630c069e52a67559242f3bf62ebfdc9" data-fancybox="images"><img src="基于dubbo的分布式架构\4630c069e52a67559242f3bf62ebfdc9.webp" alt="4630c069e52a67559242f3bf62ebfdc9" title class></a>
+                <p>4630c069e52a67559242f3bf62ebfdc9</p>
+            </figure>
+
+<p>其中我们可以看到有两个服务已经注册上去了，但是没有消费者。</p>
+<h2 id="消费服务"><a href="#消费服务" class="headerlink" title="消费服务"></a>消费服务</h2><p>为了能够更直观的体验到消费服务，我新建了一个项目：<br><a href="https://github.com/crossoverJie/SSM-CONSUMER" target="_blank" rel="noopener">github.com/crossoverJi…</a>。</p>
+<p>其中在<code>SSM-CONSUMER-API</code>中我也定义了一个接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Function:薪资API</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> chenjiec</span></span><br><span class="line"><span class="comment"> * Date: 2017/4/4 下午9:46</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.7</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">SalaryInfoApi</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取薪资</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> userId</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> SalaryInfoRsp <span class="title">getSalaryInfo</span><span class="params">(<span class="keyword">int</span> userId)</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为作为消费者的同时我们也对外提供了一个获取薪资的一个服务。</p>
+<p>在<code>SSM-CONSUMER-SERVICE</code>模块中进行了实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Function:</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> chenjiec</span></span><br><span class="line"><span class="comment"> * Date: 2017/4/4 下午9:51</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.7</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SalaryInfoApiImpl</span> <span class="keyword">implements</span> <span class="title">SalaryInfoApi</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Logger logger = LoggerFactory.getLogger(SalaryInfoApiImpl.class);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserInfoApi userInfoApi ;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取用户信息</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> userId</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> SalaryInfoRsp <span class="title">getSalaryInfo</span><span class="params">(<span class="keyword">int</span> userId)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        logger.info(<span class="string">"薪资查询Id="</span>+userId);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//返回对象</span></span><br><span class="line">        SalaryInfoRsp salaryInfoRsp = <span class="keyword">new</span> SalaryInfoRsp() ;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//调用远程服务</span></span><br><span class="line">        UserInfoRsp userInfo = userInfoApi.getUserInfo(userId);</span><br><span class="line"></span><br><span class="line">        salaryInfoRsp.setUsername(userInfo.getUserName());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> salaryInfoRsp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中就可以直接使用<code>userInfoApi</code>调用之前的个人信息服务。</p>
+<p>再调用之前需要注意的有点是，我们只需要依赖<code>SSM-BOOT</code>这个模块即可进行调用，因为<code>SSM-BOOT</code>模块已经为我们配置了<code>消费者基类</code>的操作了：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.crossoverJie<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>SSM-BOOT<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>还有一点是在配置<code>SSM-BOOT</code>中的<code>spring-dubbo-cosumer.xml</code>配置文件的时候，路径要和我们初始化spring配置文件时的路径一致：</p>
+<figure class="image-box">
+                <a rel=基于dubbo的分布式架构 href="基于dubbo的分布式架构\ca650f7d05fe604ec9f6068f9b0659a2.webp" title="ca650f7d05fe604ec9f6068f9b0659a2" data-fancybox="images"><img src="基于dubbo的分布式架构\ca650f7d05fe604ec9f6068f9b0659a2.webp" alt="ca650f7d05fe604ec9f6068f9b0659a2" title class></a>
+                <p>ca650f7d05fe604ec9f6068f9b0659a2</p>
+            </figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Spring和mybatis的配置文件 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath*:spring/*.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来跑个单测试一下能否调通：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Function:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> chenjiec</span></span><br><span class="line"><span class="comment"> *         Date: 2017/4/5 下午10:41</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> JDK 1.7</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="meta">@ContextConfiguration</span>(locations = &#123; <span class="string">"classpath*:/spring/*.xml"</span> &#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SalaryInfoApiImplTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> SalaryInfoApi salaryInfoApi ;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getSalaryInfo</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        SalaryInfoRsp salaryInfo = salaryInfoApi.getSalaryInfo(<span class="number">1</span>);</span><br><span class="line">        System.out.println(JSON.toJSONString(salaryInfo));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="image-box">
+                <a rel=基于dubbo的分布式架构 href="基于dubbo的分布式架构\fa556b3d3762ae0033488dc40758269a.webp" title="fa556b3d3762ae0033488dc40758269a" data-fancybox="images"><img src="基于dubbo的分布式架构\fa556b3d3762ae0033488dc40758269a.webp" alt="fa556b3d3762ae0033488dc40758269a" title class></a>
+                <p>fa556b3d3762ae0033488dc40758269a</p>
+            </figure>
+
+<p>消费者</p>
+<figure class="image-box">
+                <a rel=基于dubbo的分布式架构 href="基于dubbo的分布式架构\5f366efdfb26ee5857fa8883738353f0.webp" title="5f366efdfb26ee5857fa8883738353f0" data-fancybox="images"><img src="基于dubbo的分布式架构\5f366efdfb26ee5857fa8883738353f0.webp" alt="5f366efdfb26ee5857fa8883738353f0" title class></a>
+                <p>5f366efdfb26ee5857fa8883738353f0</p>
+            </figure>
+<p>提供者可以看到确实是调用成功了的。</p>
+<p>接下来将消费者项目也同时启动在来观察管理控制台有什么不一样：</p>
+<figure class="image-box">
+                <a rel=基于dubbo的分布式架构 href="基于dubbo的分布式架构\6ff7140a5a040a555a04c2f950025c75.webp" title="6ff7140a5a040a555a04c2f950025c75" data-fancybox="images"><img src="基于dubbo的分布式架构\6ff7140a5a040a555a04c2f950025c75.webp" alt="6ff7140a5a040a555a04c2f950025c75" title class></a>
+                <p>6ff7140a5a040a555a04c2f950025c75</p>
+            </figure>
+
+<p>会看到多了一个消费者所提供的服务<code>com.crossoverjie.consumer.api.SalaryInfoApi</code>,同时<br><code>com.crossoverJie.api.UserInfoApi</code>服务已经正常，说明已经有消费者了。</p>
+<figure class="image-box">
+                <a rel=基于dubbo的分布式架构 href="基于dubbo的分布式架构\a7741411bde2532ab2174aa46cb086b2.webp" title="a7741411bde2532ab2174aa46cb086b2" data-fancybox="images"><img src="基于dubbo的分布式架构\a7741411bde2532ab2174aa46cb086b2.webp" alt="a7741411bde2532ab2174aa46cb086b2" title class></a>
+                <p>a7741411bde2532ab2174aa46cb086b2</p>
+            </figure>
+
+<p>点进去便可查看具体的消费者。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这样一个基于dubbo的分布式服务已经讲的差不多了，在实际的开发中我们便会开发一个大系统中的某一个子应用，这样就算一个子应用出问题了也不会影响到整个大的项目。</p>
+<p>再提一点：<br>在实际的生产环境一般同一个服务我们都会有一个<code>master</code>,<code>slave</code>的主从服务，这样在上线的过程中不至于整个应用出现无法使用的尴尬情况。</p>
+<p>谈到了<code>SOA</code>的好处，那么自然也有相对于传统模式的不方便之处：</p>
+<ul>
+<li>拆分一个大的项目为成百上千的子应用就不可能手动上线了，即需要自动化的部署上线，如<code>Jenkins</code>。</li>
+<li>还有一个需要做到的就是监控，需要一个单独的监控平台来帮我们实时查看各个服务的运行情况以便于及时定位和解决问题。</li>
+<li>日志查看分析，拆分之后不可能再去每台服务器上查看日志，需要一个单独的日志查看分析工具如<code>elk</code>。</li>
+</ul>
+<p>以上就是我理解的，如有差错欢迎指正。</p>
+<blockquote>
+<p>项目地址：<a href="https://github.com/crossoverJie/SSM.git" target="_blank" rel="noopener">github.com/crossoverJi…</a></p>
+<p>个人博客地址：<a href="http://crossoverjie.top/" target="_blank" rel="noopener">crossoverjie.top</a>。</p>
+<p>GitHub地址：<a href="https://github.com/crossoverJie" target="_blank" rel="noopener">github.com/crossoverJi…</a>。</p>
+</blockquote>
+
+        </div>
+        
+<blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-10-25T08:05:52.812Z" itemprop="dateUpdated">2019-10-25 16:05:52</time>
+</span><br>
+
+
+        
+        转载注明出处，原文地址：<a href="/2019/10/24/2019-09-24-基于dubbo的分布式架构/" target="_blank" rel="external">https://gaooye.github.io/2019/10/24/2019-09-24-基于dubbo的分布式架构/</a>
+        
+    </div>
+    <footer>
+        <a href="https://gaooye.github.io">
+            <img src="/img/girl.jpg" alt="gaooye`s blog">
+            gaooye`s blog
+        </a>
+    </footer>
+</blockquote>
+
+        
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dubbo/">dubbo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分布式/">分布式</a></li></ul>
+
+            <div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gaooye.github.io/2019/10/24/2019-09-24-基于dubbo的分布式架构/&title=《基于dubbo的分布式架构》 — 勇敢的立 F L A G ！&pic=https://gaooye.github.io/img/girl.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gaooye.github.io/2019/10/24/2019-09-24-基于dubbo的分布式架构/&title=《基于dubbo的分布式架构》 — 勇敢的立 F L A G ！&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gaooye.github.io/2019/10/24/2019-09-24-基于dubbo的分布式架构/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《基于dubbo的分布式架构》 — 勇敢的立 F L A G ！&url=https://gaooye.github.io/2019/10/24/2019-09-24-基于dubbo的分布式架构/&via=https://gaooye.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gaooye.github.io/2019/10/24/2019-09-24-基于dubbo的分布式架构/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+        </div>
+        
+            
+
+
+        
+    </div>
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="next">
+      <a href="/2019/09/24/四个方面考虑sql优化/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">四个方面考虑sql优化</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+    
+    
+        <aside class="post-widget">
+            <nav class="post-toc-wrap" id="post-toc">
+                <strong>目录</strong>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-text">前言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#浅谈分布式架构"><span class="post-toc-text">浅谈分布式架构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#单系统"><span class="post-toc-text">单系统</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#垂直拆分-多应用"><span class="post-toc-text">垂直拆分-多应用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#SOA服务化"><span class="post-toc-text">SOA服务化</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#基于dubbo的实现"><span class="post-toc-text">基于dubbo的实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对外提供服务"><span class="post-toc-text">对外提供服务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#spring-dubbo-config-xml"><span class="post-toc-text">spring-dubbo-config.xml</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#spring-dubbo-provider-xml"><span class="post-toc-text">spring-dubbo-provider.xml</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#spring-dubbo-consumer-xml"><span class="post-toc-text">spring-dubbo-consumer.xml</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装管理控制台"><span class="post-toc-text">安装管理控制台</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#消费服务"><span class="post-toc-text">消费服务</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结"><span class="post-toc-text">总结</span></a></li></ol>
+            </nav>
+            <div class="toc-bar"><div>
+        </aside>
+    
+</article>
+
+
+</div>
+
+    </main>
+    <footer class="footer ">
+    
+    <div class="top">
+        
+            <p>
+    <span>Links：</span>
+    
+    <span class="blogroll-item">
+        <a href="https://www.lujingtao.com" target="_blank">HOME</a>
+    </span>
+    
+</p>
+
+        
+    </div>
+    
+    <div class="bottom">
+        <p>
+            <span>
+                gaooye`s blog &copy; 2019
+            </span>
+        		
+           	
+           	<span>
+           		<a href="http://www.miitbeian.gov.cn/" target="_blank">搞嘢gaooye</a>
+           	</span>
+           	
+            
+            
+            
+            
+
+            
+                
+<span class="site-uv" title="总访客量">访客小伙伴：
+    <i class="icon icon-user"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>
+
+
+<span class="site-pv" title="总访问量">访问量：
+    <i class="icon icon-eye"></i>
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+            
+        </p>
+    </div>
+</footer>
+
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://gaooye.github.io/2019/10/24/2019-09-24-基于dubbo的分布式架构/&title=《基于dubbo的分布式架构》 — 勇敢的立 F L A G ！&pic=https://gaooye.github.io/img/girl.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://gaooye.github.io/2019/10/24/2019-09-24-基于dubbo的分布式架构/&title=《基于dubbo的分布式架构》 — 勇敢的立 F L A G ！&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://gaooye.github.io/2019/10/24/2019-09-24-基于dubbo的分布式架构/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《基于dubbo的分布式架构》 — 勇敢的立 F L A G ！&url=https://gaooye.github.io/2019/10/24/2019-09-24-基于dubbo的分布式架构/&via=https://gaooye.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://gaooye.github.io/2019/10/24/2019-09-24-基于dubbo的分布式架构/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+      
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrUlEQVR42u3aQZLbMAwEwP3/p5MPrOUZgnCcqtbJpZIltg4EBODnJz7+PB7Jf5/v9vyUV/e5duDh4eEtLL0982opz9c8n0lexC/PxcPDw1vjPW/oyeb+vJR8c5/cBw8PD++beQk7uedZIMHDw8P733ntVv4cHtpgg4eHh/eveG0JNS/F5gGjfYmXay14eHh45x2rCwWC7d8r/T08PDy8cVd9ktrO211t0+uXZ+Hh4eEt8Nqm1FlpIE/H5+kyHh4e3md4+Qd/sui86dX+N78DHh4e3h7vrDGfp8JtqTcJQknZdzR3gIeHh3ep8nmWCrcFiySQ5Ffi4eHhbfDutvlvlXfzxPrNs/Dw8PAWePmgQLtxz1/QJFBF0Q8PDw/viLdXVD0bI5gUIN6k1Hh4eHgLvPyROT4vdrRBoh4XwMPDw1vgnaW8bVKelBWS1DkJIXh4eHgbvLygMBmxmqTOZwMNeHh4eJ/k5RtunhwnLf82By6CFh4eHt5VXrLVno0XnDXDLpcq8PDw8BZ4bZP+Vim2Hb1qE/qoYo2Hh4d3iTdv80+CSjtiVbwsPDw8vKu8tpRwNm519jsfUDicj8DDw8MrefniJiWDsxR8Eqjw8PDwPsMrOmZxwKjz+jyaBR8DeHh4eBu8SekhWVxyfT5G0JaY8fDw8D7Ja1v17StIAtK1sggeHh7eGi/aZMfbfVv4mIwR4OHh4W3zJgNSSWhp7zk5XqbUeHh4eGPepLnVNvLPhgPaV4yHh4e3zWu32nlImAxgzQe28PDw8G7xkmCQDxm0AeBsLKAevcLDw8Nb4E1S28MHXx1NeBMY8PDw8L6AN9n688GpC+VgPDw8vK/hPS8xb/a3CXpbaMbDw8Pb403GT+fJcRt4ivN4eHh4C7zJB//eWGoehC6MbeHh4eGlvL+O+g0BEEhEoQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+    
+    <!-- main-js -->
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/plugins/fastclick.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/plugins/ios-orientationchange-fix.js?v=1.4.4"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script type="text/javascript" src="/js/method.js?v=1.4.4"></script>
+<script type="text/javascript" src="/js/blog.js?v=1.4.4"></script>
+
+<!-- third-party -->
+
+
+
+
+
+
+<script type="text/javascript" src="/js/plugins/local_search.js?v=1.4.4"></script>
+<script type="text/javascript">
+	var search_path = "search.xml";
+	if (search_path.length === 0) {
+		search_path = "search.xml";
+	}
+	var path = "/" + search_path;
+	searchFunc(path, "local-search-input", "local-search-result");
+</script>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    
+    
+
+
+
+
+
+    <!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+    <script>
+    (function() {
+        var OriginTitile = document.title, titleTime;
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                document.title = 'eiei,我不见了！';
+                clearTimeout(titleTime);
+            } else {
+                document.title = 'eiei,我又回来了！';
+                titleTime = setTimeout(function() {
+                    document.title = OriginTitile;
+                },2000);
+            }
+        });
+    })();
+</script>
+
+
+
+
+
+    
+</body>
+</html>
